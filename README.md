@@ -13,7 +13,7 @@ same header. Then we open the live site and click through.
 
 Once GitHub Pages is on, the site is live here:
 
-> **https://<USERNAME>.github.io/umain-jam/**  ← _facilitator: paste the real URL_
+> **https://anatoliygromov.github.io/aijam2026/**
 
 It already works from minute zero — every nav link is wired, the pages are just
 placeholders waiting for each team to replace them.

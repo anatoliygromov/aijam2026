@@ -4,7 +4,7 @@ You only do this once. After it, every team commit auto-publishes to the live UR
 
 ## 1. Create the repo
 - Go to github.com → **New repository**.
-- Name: `umain-jam` · Visibility: **Public** (required for free Pages + a public URL).
+- Name: `aijam2026` · Visibility: **Public** (required for free Pages + a public URL).
 - Create it.
 
 ## 2. Upload the site
@@ -18,17 +18,16 @@ You only do this once. After it, every team commit auto-publishes to the live UR
 - **Settings → Pages.**
 - **Source:** Deploy from a branch → Branch: **`main`**, folder: **`/ (root)`** → **Save.**
 - Wait ~1 min. The page shows your live URL:
-  **`https://<your-username>.github.io/umain-jam/`**
+  **`https://anatoliygromov.github.io/aijam2026/`**
 
 ## 4. Verify
 - Open the URL. You should see the placeholder homepage with a working nav.
 - Click each nav item — every page should load (Home · About Us · Product Design Team · Contact · 404).
 
-## 5. Fill in the blanks
-- In `README.md` and `TEAM-CARDS.md`, replace `<USERNAME>` / `<repo>` with your real
-  URL (e.g. `https://github.com/yourname/umain-jam`).
+## 5. Live now ✅
+- Site: **https://anatoliygromov.github.io/aijam2026/** · Repo: **https://github.com/anatoliygromov/aijam2026**
 - Per-team file links follow this pattern:
-  `https://github.com/<you>/umain-jam/blob/main/index.html` (swap the filename per team).
+  `https://github.com/anatoliygromov/aijam2026/blob/main/index.html` (swap the filename per team).
 
 ---
 

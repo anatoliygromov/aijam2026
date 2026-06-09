@@ -1,12 +1,12 @@
 # 🃏 Team Cards — hand one to each team
 
 Each card has everything a team needs: their page, vibe, and a paste-ready Claude prompt.
-Fill in the two `<…>` blanks (repo file link + live URL) before printing.
+Live site: **https://anatoliygromov.github.io/aijam2026/** · Repo: **https://github.com/anatoliygromov/aijam2026**
 
 ---
 
 ## 🪓 TEAM 1 — HOMEPAGE · Epic Norse saga
-**Your file:** `index.html` → `<repo>/blob/main/index.html`
+**Your file:** `index.html` → `https://github.com/anatoliygromov/aijam2026/blob/main/index.html`
 **Your job:** Umain's homepage as an epic Norse saga, in the aesthetic of a Viking/mythic
 film your team loves (The Northman, How to Train Your Dragon, Valhalla Rising…).
 
@@ -29,7 +29,7 @@ Output the complete updated index.html.
 ---
 
 ## 🏛️ TEAM 2 — ABOUT UMAIN · Grand historical era
-**Your file:** `about.html` → `<repo>/blob/main/about.html`
+**Your file:** `about.html` → `https://github.com/anatoliygromov/aijam2026/blob/main/about.html`
 **Your job:** Umain's story set in a grand historical era, in the aesthetic of a period
 film your team loves (Marie Antoinette, Barry Lyndon, Gladiator, The Favourite…).
 
@@ -52,7 +52,7 @@ Output the complete updated about.html.
 ---
 
 ## 🃏 TEAM 3 — DESIGN TEAM · Collectible trading cards
-**Your file:** `team.html` → `<repo>/blob/main/team.html`
+**Your file:** `team.html` → `https://github.com/anatoliygromov/aijam2026/blob/main/team.html`
 **Your job:** the design team as collectible cards, in the aesthetic of an ensemble film
 your team loves (Into the Spider-Verse, Ocean's Eleven, X-Men, Kingsman…).
 
@@ -75,7 +75,7 @@ Output the complete updated team.html.
 ---
 
 ## 🕵️ TEAM 4 — CONTACT · Spy dead-drop
-**Your file:** `contact.html` → `<repo>/blob/main/contact.html`
+**Your file:** `contact.html` → `https://github.com/anatoliygromov/aijam2026/blob/main/contact.html`
 **Your job:** "get in touch" as a covert spy briefing, in the aesthetic of a spy film
 your team loves (Mission: Impossible, any Bond, Kingsman, Tinker Tailor…).
 
@@ -98,7 +98,7 @@ Output the complete updated contact.html.
 ---
 
 ## 🔦 TEAM 5 — 404 · Film-noir crime scene
-**Your file:** `404.html` → `<repo>/blob/main/404.html`
+**Your file:** `404.html` → `https://github.com/anatoliygromov/aijam2026/blob/main/404.html`
 **Your job:** the missing page as a noir detective case, in the aesthetic of a noir film
 your team loves (Sin City, Chinatown, Blade Runner, L.A. Confidential…).
 
