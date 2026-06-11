@@ -19,6 +19,458 @@
      Edit ONLY this file. Don't touch nav.css or nav.js — that's the shared nav. -->
 <main>
 
+<style>
+@import url('https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap');
+/* ===== Team 1 · The Crossing — light-painting hero + manifesto =====
+   Umain black/white. A WebGL doodle ship lurks in the dark; you carry a lantern
+   with the cursor and the page STAYS LIT where you've been, then slowly fades. */
+
+main{display:block}
+
+/* hide the system cursor across the saga — the lantern is the cursor */
+.saga-hero, .saga-manifesto{cursor:none}
+
+/* ---------- ACT I — THE DARK ---------- */
+.saga-hero{
+  position:relative;
+  height:100vh;
+  min-height:640px;
+  overflow:hidden;
+  background:#000;
+}
+
+/* the WebGL doodle ship — always rendered bright, glow via CSS, dimmed by the fog */
+.ship-canvas{
+  position:absolute; inset:0;
+  width:100%; height:100%;
+  z-index:1; pointer-events:none;
+  filter:
+    drop-shadow(0 0 3px rgba(255,255,255,.55))
+    drop-shadow(0 0 11px rgba(255,255,255,.32))
+    drop-shadow(0 0 28px rgba(244,201,122,.20));
+}
+
+.slogan-stage{
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:0 24px;
+}
+.kicker{
+  font:600 13px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing:.5em; text-transform:uppercase; padding-left:.5em;
+  color:var(--ember,#f4c97a);
+  text-shadow:0 0 16px rgba(244,201,122,.5);
+  margin-bottom:1.7rem;
+}
+.slogan{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700;
+  font-size:clamp(2.4rem,9vw,7rem); line-height:1.0; letter-spacing:-.03em;
+  color:#fff; margin:0;
+  text-shadow:0 0 22px rgba(255,255,255,.4), 0 0 52px rgba(244,201,122,.22);
+}
+.slogan span{display:block}
+.cue{
+  margin-top:2.1rem;
+  font:600 12px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing:.42em; text-transform:uppercase; padding-left:.42em;
+  color:rgba(255,255,255,.7);
+}
+
+/* "move your light" hint, faint until the first move */
+.hint{
+  position:absolute; left:50%; bottom:7%; transform:translateX(-50%);
+  z-index:7; pointer-events:none;
+  font:600 11px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing:.45em; text-transform:uppercase; padding-left:.45em;
+  color:rgba(255,255,255,.6);
+  animation:hintpulse 2.6s ease-in-out infinite;
+}
+.hint.gone{opacity:0; transition:opacity .9s ease}
+@keyframes hintpulse{0%,100%{opacity:.25}50%{opacity:.7}}
+
+/* ---------- ACT II — THE MANIFESTO ---------- */
+.saga-manifesto{
+  position:relative;
+  min-height:100vh;
+  background:#000;
+  overflow:hidden;
+}
+.manifesto-stage{
+  position:absolute; inset:0; z-index:3; pointer-events:none;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  text-align:center; padding:8vh 24px;
+}
+.manifesto{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700;
+  font-size:clamp(1.6rem,4.3vw,3.1rem); line-height:1.24; letter-spacing:-.02em;
+  color:#fff; margin:0; max-width:30ch;
+  text-shadow:0 0 20px rgba(255,255,255,.34), 0 0 46px rgba(244,201,122,.18);
+}
+.manifesto .line{display:block}
+.manifesto .accent{
+  display:block;
+  font-family:"MedievalSharp",serif; font-weight:400; letter-spacing:0;
+  font-size:clamp(1.9rem,5.2vw,3.8rem); line-height:1.1;
+  color:var(--ember,#f4c97a);
+  text-shadow:0 0 24px rgba(244,201,122,.6);
+  margin-top:.55em;
+  transform-origin:50% 60%;
+  will-change:text-shadow, transform, filter;
+}
+.creed{
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight:700;
+  font-size:clamp(1.5rem,4.4vw,3rem); letter-spacing:.02em;
+  margin:2.4rem 0 0; color:#fff;
+  text-shadow:0 0 22px rgba(255,255,255,.45);
+}
+.creed span{color:var(--ember,#f4c97a); padding:0 .14em}
+.footnote{
+  font:500 13px/1.7 "Helvetica Neue",Helvetica,Arial,sans-serif;
+  letter-spacing:.04em; color:rgba(255,255,255,.78);
+  max-width:48ch; margin:2.6rem auto 0;
+}
+
+/* the FOG: a full-page canvas of darkness, permanently burned away by your light */
+.fog{position:absolute; top:0; left:0; z-index:5; pointer-events:none}
+
+/* the lantern flame — warm pool that travels with the cursor */
+.lantern{
+  position:fixed; left:0; top:0; width:680px; height:680px; border-radius:50%;
+  transform:translate3d(-50%,-50%,0); pointer-events:none; z-index:6;
+  mix-blend-mode:screen; opacity:0; transition:opacity .7s ease;
+  background:radial-gradient(circle,
+     rgba(255,238,205,.26) 0%,
+     rgba(255,222,170,.14) 24%,
+     rgba(244,201,122,.06) 46%,
+     rgba(0,0,0,0) 70%);
+}
+.lantern.on{opacity:1}
+
+@media (max-width:880px){ .lantern{width:460px;height:460px} }
+</style>
+
+<!-- ACT I — land in the dark; carry the lantern to light the saga -->
+<section class="saga-hero" id="sagaHero">
+  <canvas class="ship-canvas" id="shipCanvas"></canvas>
+
+  <div class="slogan-stage" id="sloganStage">
+    <span class="kicker">A saga in three deeds</span>
+    <h1 class="slogan">
+      <span>Ye shall shape.</span>
+      <span>Ye shall ship.</span>
+      <span>Ye shall scale.</span>
+    </h1>
+    <span class="cue">Carry your light onward&nbsp;↓</span>
+  </div>
+
+  <div class="hint" id="hint">move your light</div>
+</section>
+
+<!-- ACT II — the incantation, lit line by line -->
+<section class="saga-manifesto" id="sagaManifesto">
+  <div class="manifesto-stage" id="manifestoStage">
+    <p class="manifesto">
+      <span class="line">The old world is burning. The gods are falling. A new age rises from the ash.</span>
+      <span class="accent" id="ignite">Umain was built for this crossing.</span>
+    </p>
+    <p class="creed"><span>Shape.</span> <span>Ship.</span> <span>Scale.</span></p>
+    <p class="footnote">A digital product consultancy, forged in Stockholm in 2001. 130+ designers, engineers and product thinkers — shaping, shipping and scaling through design&nbsp;+&nbsp;technology. Part of Eidra.</p>
+  </div>
+</section>
+
+<!-- the darkness, and the flame that burns it away -->
+<canvas class="fog" id="fog"></canvas>
+<div class="lantern" id="lantern" aria-hidden="true"></div>
+
+<!-- ▽▽▽  TEAMMATES: add 'what Umain does' + call-to-action sections below this line  ▽▽▽ -->
+
+
+<!-- three.js (CDN) — used for the WebGL doodle ship centrepiece -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<script>
+/* always start at the top of the saga, even on refresh */
+if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+window.addEventListener('beforeunload', function(){ window.scrollTo(0,0); });
+window.addEventListener('load', function(){ window.scrollTo(0,0); });
+window.scrollTo(0,0);
+
+/* ===== Lantern + light-painting fog (no deps — runs even if WebGL fails) =====
+   The page lands fully dark. Your torch paints permanent light into a document-
+   space light map: each area stays black until the torch reaches it, then stays
+   lit forever — even as you scroll away and back. */
+(function(){
+  var lantern = document.getElementById('lantern');
+  var hint    = document.getElementById('hint');
+  var fog     = document.getElementById('fog');
+  var fctx    = fog.getContext('2d');
+  var lmap    = document.createElement('canvas');   // persistent light map (full page)
+  var lctx    = lmap.getContext('2d');
+
+  var DPR  = Math.min(window.devicePixelRatio || 1, 2);
+  var VEIL = 0.92;   // darkness over unlit areas — ship is a very faint ghost
+  var R    = 300;    // torch reach (CSS px) — wide
+  var W, DH, WD, HD; // CSS width, doc height; device width/height
+
+  function docHeight(){
+    return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight,
+                    document.body.offsetHeight, window.innerHeight);
+  }
+  function fillDark(){            // reset fog to full darkness
+    fctx.globalCompositeOperation = 'source-over';
+    fctx.clearRect(0,0,WD,HD);
+    fctx.fillStyle = 'rgba(0,0,0,' + VEIL + ')';
+    fctx.fillRect(0,0,WD,HD);
+  }
+  function sizeFog(){
+    W = window.innerWidth; DH = docHeight();
+    WD = Math.round(W*DPR); HD = Math.round(DH*DPR);
+    fog.width = WD; fog.height = HD;
+    fog.style.width = W + 'px'; fog.style.height = DH + 'px';
+    lmap.width = WD; lmap.height = HD;
+    lctx.clearRect(0,0,WD,HD);    // resizing clears the lit map
+    fillDark();
+  }
+  sizeFog();
+  window.addEventListener('resize', sizeFog);
+
+  function compose(x,y,w,h){      // recompose only the dirty rect (device px)
+    x = Math.max(0, Math.floor(x)); y = Math.max(0, Math.floor(y));
+    var x2 = Math.min(WD, Math.ceil(x+w)), y2 = Math.min(HD, Math.ceil(y+h));
+    w = x2-x; h = y2-y; if(w<=0 || h<=0) return;
+    fctx.globalCompositeOperation = 'source-over';
+    fctx.clearRect(x,y,w,h);
+    fctx.fillStyle = 'rgba(0,0,0,' + VEIL + ')';
+    fctx.fillRect(x,y,w,h);
+    fctx.globalCompositeOperation = 'destination-out';
+    fctx.drawImage(lmap, x,y,w,h, x,y,w,h);
+  }
+  function burn(cx, cy){          // paint permanent light at doc CSS coords
+    var X = cx*DPR, Y = cy*DPR, Rr = R*DPR;
+    lctx.globalCompositeOperation = 'lighter';
+    var g = lctx.createRadialGradient(X,Y,0, X,Y,Rr);
+    g.addColorStop(0,    'rgba(255,255,255,0.95)');
+    g.addColorStop(0.55, 'rgba(255,255,255,0.40)');
+    g.addColorStop(1,    'rgba(255,255,255,0)');
+    lctx.fillStyle = g;
+    lctx.fillRect(X-Rr, Y-Rr, Rr*2, Rr*2);
+    compose(X-Rr, Y-Rr, Rr*2, Rr*2);
+  }
+
+  function scrollY(){ return window.pageYOffset || document.documentElement.scrollTop || 0; }
+
+  var lastX = 0, lastY = 0, moved = false;
+  var cx = 0, cy = 0;             // eased torch position in DOCUMENT coords
+  var hot = document.getElementById('ignite');   // the rune line that catches fire
+  var tF = 0;
+
+  window.addEventListener('mousemove', function(e){
+    lastX = e.clientX; lastY = e.clientY;
+    if(!moved){
+      moved = true;
+      cx = lastX; cy = lastY + scrollY();   // start from the cursor, no jump
+      lantern.classList.add('on');
+      if(hint) hint.classList.add('gone');
+    }
+  });
+
+  (function loop(){
+    if(moved){
+      var tX = lastX, tY = lastY + scrollY();   // target in document space
+      cx += (tX - cx) * 0.20;
+      cy += (tY - cy) * 0.20;
+      burn(cx, cy);
+      // warm flame follows the cursor on screen
+      lantern.style.transform =
+        'translate3d(' + cx + 'px,' + (cy - scrollY()) + 'px,0) translate(-50%,-50%)';
+    }
+
+    // ignite the rune line when the torch comes near it
+    tF += 0.016;
+    if(hot){
+      var r  = hot.getBoundingClientRect();
+      var hx = r.left + r.width/2;
+      var hy = r.top + r.height/2 + scrollY();        // document coords
+      var dx = cx - hx, dy = cy - hy;
+      var d  = Math.sqrt(dx*dx + dy*dy);
+      var range = Math.max(300, r.width*0.6);
+      var i = moved ? Math.max(0, 1 - d/range) : 0;
+      i = i*i;                                          // ease in
+      if(i < 0.02){
+        hot.style.textShadow = ''; hot.style.transform = ''; hot.style.filter = '';
+      } else {
+        var f = 0.80 + Math.sin(tF*23)*0.12 + Math.random()*0.10;  // fire flicker
+        var b = i*f;
+        hot.style.textShadow =
+          '0 0 ' + (8 + 24*b).toFixed(1)  + 'px rgba(255,210,140,' + (0.55 + 0.45*b).toFixed(2) + '),' +
+          '0 0 ' + (22 + 70*b).toFixed(1) + 'px rgba(255,150,60,'  + (0.45*b).toFixed(2) + '),' +
+          '0 0 ' + (44 + 112*b).toFixed(1)+ 'px rgba(255,95,25,'   + (0.32*b).toFixed(2) + ')';
+        hot.style.filter    = 'brightness(' + (1 + 0.45*b).toFixed(2) + ')';
+        hot.style.transform = 'scale(' + (1 + 0.02*b).toFixed(3) + ')';
+      }
+    }
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ===== WebGL doodle ship — white line-art, gentle rock, gold ember ===== */
+(function(){
+  if(!window.THREE) return;
+  var canvas = document.getElementById('shipCanvas');
+  var renderer, scene, camera;
+  try{
+    renderer = new THREE.WebGLRenderer({canvas:canvas, antialias:true, alpha:true});
+  }catch(err){ return; }
+  renderer.setClearColor(0x000000, 0);
+
+  scene  = new THREE.Scene();
+  camera = new THREE.PerspectiveCamera(42, 1, 0.1, 100);
+  camera.position.set(0, 0.45, 7.2);
+  camera.lookAt(0, 0.25, 0);
+
+  var ship = new THREE.Group();
+  ship.position.y = -0.10;
+  scene.add(ship);
+
+  var mat = new THREE.LineBasicMaterial({color:0xffffff, transparent:true, opacity:0.92});
+
+  function V(a){ return new THREE.Vector3(a[0], a[1], a[2]); }
+  function resample(pts, seg){
+    var out = [];
+    for(var i=0;i<pts.length-1;i++){
+      for(var s=0;s<seg;s++){ out.push(pts[i].clone().lerp(pts[i+1], s/seg)); }
+    }
+    out.push(pts[pts.length-1].clone());
+    return out;
+  }
+  function jit(pts, a){
+    return pts.map(function(p){
+      return p.clone().add(new THREE.Vector3(
+        (Math.random()-0.5)*a, (Math.random()-0.5)*a, (Math.random()-0.5)*a*0.5));
+    });
+  }
+  function addLine(arr, seg, amp){
+    var pts = resample(arr.map(V), seg||6);
+    pts = jit(pts, amp==null?0.022:amp);              // hand-drawn wobble
+    ship.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts), mat));
+  }
+  function atZ(arr, z){ return arr.map(function(p){ return [p[0], p[1], z]; }); }
+
+  // hull (two sides — a doodle banana boat, top deck + curved belly)
+  var hull = [[-1.72,0.0,0],[-1.5,-0.22,0],[-0.9,-0.6,0],[0.0,-0.74,0],
+              [0.9,-0.62,0],[1.55,-0.3,0],[2.06,0.04,0],[-1.72,0.0,0]];
+  addLine(atZ(hull, 0.5), 6, 0.024);
+  addLine(atZ(hull,-0.5), 6, 0.024);
+  // pointed 3D prow + stern transom + keel
+  addLine([[2.06,0.04,0.5],[2.4,0.13,0]], 4, 0.018);
+  addLine([[2.06,0.04,-0.5],[2.4,0.13,0]], 4, 0.018);
+  addLine([[-1.72,0.0,0.5],[-1.8,-0.12,0],[-1.72,0.0,-0.5]], 4, 0.018);
+  addLine([[-1.75,-0.08,0],[0,-0.85,0],[2.2,0.12,0]], 8, 0.018);
+  // ribs / deck cross-lines for depth
+  addLine([[-1.0,0.0,0.5],[-1.0,0.0,-0.5]], 3, 0.012);
+  addLine([[0,-0.74,0.5],[0,-0.78,-0.5]], 3, 0.012);
+  addLine([[1.0,0.02,0.5],[1.0,0.02,-0.5]], 3, 0.012);
+
+  // mast
+  addLine([[0.15,0.0,0],[0.15,2.45,0]], 8, 0.018);
+  // mainsail (stern side, slight belly)
+  addLine([[0.15,2.4,0.06],[-0.8,1.55,0.10],[-1.45,0.55,0.06],
+           [-0.6,0.4,0.06],[0.15,0.18,0.06],[0.15,2.4,0.06]], 7, 0.028);
+  // jib (bow side)
+  addLine([[0.15,2.12,-0.05],[1.3,1.0,-0.07],[2.2,0.14,-0.05],
+           [0.9,0.2,-0.05],[0.15,0.2,-0.05],[0.15,2.12,-0.05]], 7, 0.026);
+
+  // ---- the one warm ember on the masthead ----
+  function makeEmber(){
+    var c = document.createElement('canvas'); c.width = c.height = 128;
+    var x = c.getContext('2d');
+    var g = x.createRadialGradient(64,64,0,64,64,64);
+    g.addColorStop(0,'rgba(255,228,178,1)');
+    g.addColorStop(0.25,'rgba(255,184,96,0.9)');
+    g.addColorStop(0.6,'rgba(222,132,42,0.32)');
+    g.addColorStop(1,'rgba(222,132,42,0)');
+    x.fillStyle = g; x.fillRect(0,0,128,128);
+    return new THREE.CanvasTexture(c);
+  }
+  var ember = new THREE.Sprite(new THREE.SpriteMaterial({
+    map:makeEmber(), transparent:true, opacity:0.85,
+    blending:THREE.AdditiveBlending, depthWrite:false}));
+  ember.scale.setScalar(0.95); ember.position.set(0.15, 2.5, 0);
+  ship.add(ember);
+  var core = new THREE.Mesh(new THREE.SphereGeometry(0.045,12,12),
+                            new THREE.MeshBasicMaterial({color:0xfff0d2}));
+  core.position.copy(ember.position); ship.add(core);
+
+  // ---- sparse rune-stars in the dark ----
+  var sp = [];
+  for(var i=0;i<140;i++){ sp.push((Math.random()-0.5)*13, (Math.random()-0.2)*7, -1 - Math.random()*3.5); }
+  var starGeo = new THREE.BufferGeometry();
+  starGeo.setAttribute('position', new THREE.Float32BufferAttribute(sp,3));
+  scene.add(new THREE.Points(starGeo, new THREE.PointsMaterial({
+    color:0xffffff, size:0.05, transparent:true, opacity:0.8,
+    sizeAttenuation:true, blending:THREE.AdditiveBlending, depthWrite:false})));
+
+  // ---- luminous sea-lines ----
+  var waves = [];
+  function makeWave(base, z, amp, freq, spd, off, op){
+    var N = 160, pts = [];
+    for(var i=0;i<N;i++){ pts.push(new THREE.Vector3(-6 + (i/(N-1))*12, base, z)); }
+    var geo = new THREE.BufferGeometry().setFromPoints(pts);
+    scene.add(new THREE.Line(geo, new THREE.LineBasicMaterial({color:0xffffff, transparent:true, opacity:op})));
+    waves.push({geo:geo, N:N, base:base, amp:amp, freq:freq, spd:spd, off:off});
+  }
+  makeWave(-1.00, 0.2, 0.12, 0.9, 0.8, 0.0, 0.80);
+  makeWave(-1.25, 0.5, 0.16, 0.7, 0.6, 1.5, 0.55);
+  makeWave(-1.50,-0.3, 0.10, 1.1, 1.0, 3.0, 0.40);
+
+  // ---- cursor steering ----
+  var mnx = 0, mny = 0;
+  window.addEventListener('mousemove', function(e){
+    mnx = (e.clientX/window.innerWidth)*2 - 1;
+    mny = (e.clientY/window.innerHeight)*2 - 1;
+  });
+
+  function resize(){
+    var w = canvas.clientWidth || window.innerWidth;
+    var h = canvas.clientHeight || window.innerHeight;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(w, h, false);
+    camera.aspect = w/h; camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  var t = 0;
+  function tick(){
+    t += 0.016;
+    ship.rotation.z = Math.sin(t*0.7) * 0.045;                       // rock
+    ship.position.y = -0.10 + Math.sin(t*0.9) * 0.06;                // bob
+    ship.rotation.y += ((mnx*0.45) - ship.rotation.y) * 0.05;        // steer
+    ship.rotation.x += ((-mny*0.10) - ship.rotation.x) * 0.05;       // lean
+
+    for(var k=0;k<waves.length;k++){
+      var w = waves[k], pos = w.geo.attributes.position;
+      for(var i=0;i<w.N;i++){
+        var x = -6 + (i/(w.N-1))*12;
+        pos.setY(i, w.base + Math.sin(x*w.freq + t*w.spd + w.off) * w.amp);
+      }
+      pos.needsUpdate = true;
+    }
+
+    var pulse = 0.7 + Math.sin(t*3) * 0.22;
+    ember.material.opacity = pulse;
+    ember.scale.setScalar(0.9 + Math.sin(t*3) * 0.08);
+
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+
 </main>
 <!-- ▲▲▲  end of your page  ▲▲▲ -->
 
