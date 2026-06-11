@@ -105,12 +105,12 @@ main{display:block}
   font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
   font-weight:700;
   font-size:clamp(1.6rem,4.3vw,3.1rem); line-height:1.24; letter-spacing:-.02em;
-  color:#fff; margin:0; max-width:30ch;
+  color:#fff; margin:0; max-width:none;
   text-shadow:0 0 20px rgba(255,255,255,.34), 0 0 46px rgba(244,201,122,.18);
 }
-.manifesto .line{display:block}
+.manifesto .line{display:block; white-space:nowrap}
 .manifesto .accent{
-  display:block;
+  display:block; white-space:nowrap;
   font-family:"MedievalSharp",serif; font-weight:400; letter-spacing:0;
   font-size:clamp(1.9rem,5.2vw,3.8rem); line-height:1.1;
   color:var(--ember,#f4c97a);
@@ -149,7 +149,10 @@ main{display:block}
 }
 .lantern.on{opacity:1}
 
-@media (max-width:880px){ .lantern{width:460px;height:460px} }
+@media (max-width:880px){
+  .lantern{width:460px;height:460px}
+  .manifesto .line, .manifesto .accent{white-space:normal}  /* allow wrap on small screens */
+}
 
 /* ---------- ACT III — THE THREE DISCIPLINES (fully lit, normal cursor) ---------- */
 .disciplines{
@@ -220,7 +223,8 @@ main{display:block}
 <section class="saga-manifesto" id="sagaManifesto">
   <div class="manifesto-stage" id="manifestoStage">
     <p class="manifesto">
-      <span class="line">The old world is burning. The gods are falling. A new age rises from the ash.</span>
+      <span class="line">The old world is burning. The gods are falling.</span>
+      <span class="line">A new age rises from the ash.</span>
       <span class="accent" id="ignite">Umain was built for this crossing.</span>
     </p>
     <p class="creed"><span>Shape.</span> <span>Ship.</span> <span>Scale.</span></p>
