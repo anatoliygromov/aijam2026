@@ -1,11 +1,11 @@
 # 🎬 Umain AI Jam — The Exquisite Corpse
 
-Five teams each build **one page** of the Umain website — blind to each other — in the
-aesthetic of a **film of their choosing**. Every page pulls in one shared nav
-(`nav.css` + `nav.js`), so five wildly different film worlds still snap together under the
-same header. Then we open the live site and click through.
+Four teams each build **one page** of the Umain website — blind to each other — each with a
+**set theme**, free to draw inspiration from any **films, books, music or plays** in that
+world. Every page pulls in one shared nav (`nav.css` + `nav.js`), so four wildly different
+worlds still snap together under the same header. Then we open the live site and click through.
 
-**Format:** 45–60 min · 10 people · 5 teams of 2 · Tools: Claude + image gen (no Figma)
+**Format:** 45–60 min · 9 people · 4 teams (3 pairs + a trio) · Tools: Claude (Cowork) + GitHub Desktop + an image-gen tool (no Figma)
 
 ---
 
@@ -22,13 +22,17 @@ placeholders waiting for each team to replace them.
 
 ## 🧩 The pages & teams
 
-| Team | Page | File | Vibe | Pick a film like… |
-|------|------|------|------|-------------------|
-| 1 | Homepage | `index.html` | Epic Norse saga | The Northman, How to Train Your Dragon |
-| 2 | About Umain | `about.html` | Grand historical era | Marie Antoinette, Gladiator, Barry Lyndon |
-| 3 | Design Team | `team.html` | Collectible trading cards | Into the Spider-Verse, Ocean's Eleven |
-| 4 | Contact | `contact.html` | Spy dead-drop | Mission: Impossible, James Bond, Kingsman |
-| 5 | 404 | `404.html` | Film-noir crime scene | Sin City, Chinatown, Blade Runner |
+Theme + tech are set per team; inspiration is open — pull from any film, book, album or play.
+Each team's full brief (theme, tech, prompt) lives in **`teams/team-N.md`** — open only yours.
+
+| Team | Team members | Page | File | Theme | Required tech |
+|------|--------------|------|------|-------|---------------|
+| 1 | Essie · Nastya · Susanne | Homepage | `index.html` | Epic Norse saga | WebGL 3D (three.js) |
+| 2 | Jon · Ella | About Umain | `about.html` | Grand historical era | Scroll-driven animation |
+| 3 | Anton · Lona | Design Team | `team.html` | Collectible trading cards | CSS 3D transforms |
+| 4 | Sandy · Markus | Contact | `contact.html` | Spy dead-drop | GLSL fragment shader |
+
+(The `404.html` page stays as the site's default fallback — no team works on it.)
 
 ---
 
@@ -52,33 +56,27 @@ logic + the mobile menu). Each page is a thin shell that links both and drops a 
 filename. So the nav is identical everywhere, no team can break it, and a change to the
 nav means editing one file — not five.
 
-Repo files: `index.html` · `about.html` · `team.html` · `contact.html` · `404.html`
-(the five team pages) + `nav.css` · `nav.js` · `logo.svg` (shared — hands off).
-Each team also has an **`assets/teamN/`** folder for any local files they want to ship
-(optional — most pages won't need it).
+Repo files: `index.html` · `about.html` · `team.html` · `contact.html`
+(the four team pages) + `404.html` (default fallback, left as-is) + `nav.css` · `nav.js` ·
+`logo.svg` (shared — hands off). Per-team briefs live in **`teams/team-N.md`**.
+Prefer CDN / procedural assets and image URLs — no local files needed.
 
 ---
 
 ## 🛠️ How each team works & publishes (no terminal needed)
 
-1. **Get your starter** — open your file on GitHub, click **Raw**, copy everything.
-2. **Build with Claude** — paste it in, use your team card's prompt, pick your film, iterate.
-   Get images from your image-gen tool as URLs and drop them in.
-3. **Publish back** — on GitHub open your file → click the **✏️ pencil (Edit)** →
-   select all → paste your finished HTML → **Commit changes** to `main`.
+1. **Set up** — accept the GitHub invite, **Clone** the repo in GitHub Desktop, then connect
+   that folder in **Claude (Cowork)**. (Full steps in `ONBOARDING.md`.)
+2. **Build with Claude** — open your brief at `teams/team-N.md`, paste its prompt, pick your
+   inspiration, iterate. Claude edits your page directly; images come in as URLs.
+3. **Publish** — in **GitHub Desktop**: write a summary → **Commit to main** → **Push origin**.
 4. Wait ~30–60s, refresh the live URL. Your page is on the real site. 🎉
 
-> Git-comfortable? Same idea: `clone` → edit only your file → `commit` → `push`.
+> Power-user option: if you've tested that the GitHub connector can commit to `main`, you can
+> skip GitHub Desktop and have Claude commit directly.
 
 ---
 
 ## 🎤 The reveal
 
-Open the live URL on the big screen and walk the pill nav: **Home → About Us → Product Design Team → Contact → 404**. Five films, one set of seams.
-
-## 🏆 Awards (pick 3–4)
-
-- **Most on-brief** — nailed the film world completely
-- **Most unhinged** — went furthest off the deep end
-- **Would actually ship** — secretly kind of great
-- **Best whiplash** — funniest jump from the page before it
+Open the live URL on the big screen and walk the pill nav: **Home → About Us → Product Design Team → Contact**. Four worlds, one set of seams.

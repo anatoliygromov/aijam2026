@@ -1,9 +1,9 @@
-# Team 4 assets — Contact · Web Audio API
+# Team 4 assets — Contact · GLSL fragment shader
 
-Drop any **local** files this page needs here (audio clips `.mp3`/`.wav`, images).
-Reference them from `contact.html` with a relative path, e.g. `assets/team4/drop.mp3`.
+A fragment shader is usually **100% procedural** — zero files needed.
+If you want a texture, load it from a URL/CDN or drop it here and reference it
+relatively from `contact.html`, e.g. `assets/team4/noise.png`.
 
-You don't have to use this folder: you can synthesize sound generatively in code (zero files)
-or load audio from a URL/CDN. If you don't need local files, ignore this folder.
+If you don't need local files, ignore this folder.
 
 Upload files here with **Add file → Upload files** on GitHub — no terminal needed.

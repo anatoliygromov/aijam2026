@@ -11,7 +11,8 @@ You only do this once. After it, every team commit auto-publishes to the live UR
 - On the repo page: **Add file → Upload files**.
 - Drag in **all** the files from this folder — including the shared nav files:
   `index.html`, `about.html`, `team.html`, `contact.html`, `404.html`,
-  `nav.css`, `nav.js`, `logo.svg`, `README.md`, `TEAM-CARDS.md`, `SETUP.md`.
+  `nav.css`, `nav.js`, `logo.svg`, the `teams/` folder, `README.md`, `ONBOARDING.md`,
+  `PRESENTATION.md`, `SETUP.md`.
 - **Commit changes.**
 
 ## 3. Turn on GitHub Pages
@@ -32,17 +33,17 @@ You only do this once. After it, every team commit auto-publishes to the live UR
 ---
 
 ## On the day
-- Each team's link to "their file" is just the GitHub `blob/main/<file>` URL above.
-- Teams **Raw → copy → build in Claude → Edit file → paste → Commit**. ~30–60s later it's live.
-- Reveal: open the live URL on the big screen, click Home → About → Team → Contact → ⚡.
+- Each team works from its brief: `teams/team-N.md` (page, theme, required tech, paste-ready prompt).
+- Flow: **Clone in GitHub Desktop → connect the folder in Claude → prompt → Commit to main → Push origin.** ~30–60s later it's live.
+- Reveal: open the live URL on the big screen, click Home → About → Team → Contact.
 
 ## Tip
 - Tell everyone: **only edit your own file, never the locked seam.** Different files =
-  zero merge conflicts, so all five teams can commit to `main` freely.
+  zero merge conflicts, so all four teams can commit to `main` freely.
 - Need a local asset (3D model, texture, audio)? Drop it in your **`assets/teamN/`** folder
   via **Add file → Upload files** (no terminal) and reference it relatively. Most teams can
   skip this and just load assets from a URL/CDN or generate them in code.
 - Want a dramatic simultaneous reveal instead? Have each team commit to a branch named
-  after them, and you merge all five at the end. (Adds one merge step — optional.)
+  after them, and you merge all four at the end. (Adds one merge step — optional.)
 - Optional upgrade: import the repo into **Vercel** for auto-deploys + per-commit preview
   URLs. GitHub Pages is the zero-cost default.
