@@ -150,6 +150,53 @@ main{display:block}
 .lantern.on{opacity:1}
 
 @media (max-width:880px){ .lantern{width:460px;height:460px} }
+
+/* ---------- ACT III — THE THREE DISCIPLINES (fully lit, normal cursor) ---------- */
+.disciplines{
+  position:relative; z-index:8;
+  background:#0a0807; color:#efe6d2;
+  padding:clamp(80px,11vw,140px) 6vw clamp(90px,12vw,150px);
+  font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+  cursor:auto;
+}
+.disc-eyebrow{
+  text-align:center; color:#c9962f;
+  font-weight:700; font-size:14px; letter-spacing:.5em; padding-left:.5em;
+  text-transform:uppercase; margin:0;
+}
+.disc-head{
+  text-align:center; max-width:24ch; margin:30px auto 0;
+  font-weight:700; font-size:clamp(1.8rem,4.4vw,3.1rem); line-height:1.2; letter-spacing:-.02em;
+  color:#efe6d2;
+}
+.disc-grid{
+  max-width:1180px; margin:clamp(56px,7vw,92px) auto 0;
+  display:grid; grid-template-columns:repeat(3,1fr);
+}
+.disc-col{
+  display:flex; flex-direction:column;
+  padding:0 clamp(20px,2.6vw,40px);
+  border-left:1px solid rgba(201,150,47,.16);
+}
+.disc-col:first-child{ border-left:0; }
+.disc-top{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; }
+.disc-rune{ font-size:50px; line-height:1; color:#c9962f; opacity:.6; }
+.disc-norn{ text-align:right; }
+.disc-norn b{ display:block; color:#c9962f; font-size:13px; font-weight:700; letter-spacing:.24em; text-transform:uppercase; }
+.disc-norn span{ display:block; margin-top:5px; color:#7a6c50; font-size:11px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; }
+.disc-rule{ height:1px; background:rgba(201,150,47,.22); margin:24px 0 22px; }
+.disc-title{ margin:0; font-size:25px; font-weight:700; color:#efe6d2; }
+.disc-kicker{ margin:12px 0 22px; color:#c9962f; font-size:12px; font-weight:700; letter-spacing:.22em; text-transform:uppercase; }
+.disc-quote{
+  margin:0 0 22px; padding-left:16px; border-left:2px solid rgba(201,150,47,.4);
+  font-style:italic; font-weight:500; font-size:clamp(15px,1.1vw,18px); line-height:1.5; color:#cdbb8d;
+}
+.disc-body{ margin:0; color:#8a7c61; font-size:clamp(15px,1.04vw,17px); line-height:1.7; }
+.disc-num{ margin-top:34px; text-align:right; color:rgba(201,150,47,.32); font-size:13px; font-weight:700; letter-spacing:.1em; }
+@media (max-width:880px){
+  .disc-grid{ grid-template-columns:1fr; gap:54px; }
+  .disc-col{ border-left:0; padding:0; }
+}
 </style>
 
 <!-- ACT I — land in the dark; carry the lantern to light the saga -->
@@ -187,6 +234,52 @@ main{display:block}
 
 <!-- ▽▽▽  TEAMMATES: add 'what Umain does' + call-to-action sections below this line  ▽▽▽ -->
 
+<!-- ACT III — what Umain does, framed as the three Norns. Lit; normal cursor. -->
+<section class="disciplines" id="disciplines">
+  <p class="disc-eyebrow">The Three Disciplines</p>
+  <h2 class="disc-head">We shape what has not yet been made. We sail it into the world. We let it grow.</h2>
+
+  <div class="disc-grid">
+    <article class="disc-col">
+      <div class="disc-top">
+        <div class="disc-rune">ᚠ</div>
+        <div class="disc-norn"><b>Urðr · What was</b><span>Past · Roots · Ground</span></div>
+      </div>
+      <div class="disc-rule"></div>
+      <h3 class="disc-title">Strategy</h3>
+      <p class="disc-kicker">Read the terrain</p>
+      <p class="disc-quote">"Before the first stroke of the axe, the craftsman reads the wood."</p>
+      <p class="disc-body">We map the terrain before anyone sets sail. User research, market landscapes, brand positioning — we find the fault lines others have missed and the currents worth riding. Strategy at Umain is not a document. It is the reason every decision that follows makes sense.</p>
+      <p class="disc-num">01</p>
+    </article>
+
+    <article class="disc-col">
+      <div class="disc-top">
+        <div class="disc-rune">ᛉ</div>
+        <div class="disc-norn"><b>Verðandi · What is</b><span>Present · Form · Craft</span></div>
+      </div>
+      <div class="disc-rule"></div>
+      <h3 class="disc-title">Design</h3>
+      <p class="disc-kicker">Shape the form</p>
+      <p class="disc-quote">"A longship is not built to be admired in the harbour. It is built to move."</p>
+      <p class="disc-body">We shape interfaces with the weight of something real — every screen, every interaction, every empty state considered. Design systems that hold their form across a hundred surfaces. Work that earns trust the moment someone touches it, and keeps it long after.</p>
+      <p class="disc-num">02</p>
+    </article>
+
+    <article class="disc-col">
+      <div class="disc-top">
+        <div class="disc-rune">ᛊ</div>
+        <div class="disc-norn"><b>Skuld · What shall be</b><span>Future · Scale · Endure</span></div>
+      </div>
+      <div class="disc-rule"></div>
+      <h3 class="disc-title">Build</h3>
+      <p class="disc-kicker">Build to endure</p>
+      <p class="disc-quote">"The saga is not over when the ship is launched. It begins."</p>
+      <p class="disc-body">We build to scale — full-stack, production-ready, and made to grow. From first deploy to the version that carries millions, our engineers sail alongside the product. We do not hand over and disappear. We stay until what we made is strong enough to outlast us.</p>
+      <p class="disc-num">03</p>
+    </article>
+  </div>
+</section>
 
 <!-- three.js (CDN) — used for the WebGL doodle ship centrepiece -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -219,6 +312,10 @@ window.scrollTo(0,0);
     return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight,
                     document.body.offsetHeight, window.innerHeight);
   }
+  function sagaBottom(){   // the dark saga ends where the manifesto ends
+    var m = document.getElementById('sagaManifesto');
+    return m ? Math.round(m.offsetTop + m.offsetHeight) : docHeight();
+  }
   function fillDark(){            // reset fog to full darkness
     fctx.globalCompositeOperation = 'source-over';
     fctx.clearRect(0,0,WD,HD);
@@ -226,7 +323,7 @@ window.scrollTo(0,0);
     fctx.fillRect(0,0,WD,HD);
   }
   function sizeFog(){
-    W = window.innerWidth; DH = docHeight();
+    W = window.innerWidth; DH = sagaBottom();   // fog only covers the dark saga
     WD = Math.round(W*DPR); HD = Math.round(DH*DPR);
     fog.width = WD; fog.height = HD;
     fog.style.width = W + 'px'; fog.style.height = DH + 'px';
@@ -236,6 +333,7 @@ window.scrollTo(0,0);
   }
   sizeFog();
   window.addEventListener('resize', sizeFog);
+  window.addEventListener('load', sizeFog);   // recompute once fonts settle
 
   function compose(x,y,w,h){      // recompose only the dirty rect (device px)
     x = Math.max(0, Math.floor(x)); y = Math.max(0, Math.floor(y));
@@ -264,7 +362,8 @@ window.scrollTo(0,0);
 
   var lastX = 0, lastY = 0, moved = false;
   var cx = 0, cy = 0;             // eased torch position in DOCUMENT coords
-  var hot = document.getElementById('ignite');   // the rune line that catches fire
+  var hot  = document.getElementById('ignite');       // the rune line that catches fire
+  var disc = document.getElementById('disciplines');  // where the saga ends + torch retires
   var tF = 0;
 
   window.addEventListener('mousemove', function(e){
@@ -312,6 +411,14 @@ window.scrollTo(0,0);
         hot.style.transform = 'scale(' + (1 + 0.02*b).toFixed(3) + ')';
       }
     }
+
+    // the torch retires once you reach the (fully lit) disciplines section
+    if(disc){
+      var past = scrollY() + window.innerHeight*0.5 > disc.offsetTop;
+      if(past) lantern.classList.remove('on');
+      else if(moved) lantern.classList.add('on');
+    }
+
     requestAnimationFrame(loop);
   })();
 })();
