@@ -39,6 +39,9 @@ You only do this once. After it, every team commit auto-publishes to the live UR
 ## Tip
 - Tell everyone: **only edit your own file, never the locked seam.** Different files =
   zero merge conflicts, so all five teams can commit to `main` freely.
+- Need a local asset (3D model, texture, audio)? Drop it in your **`assets/teamN/`** folder
+  via **Add file → Upload files** (no terminal) and reference it relatively. Most teams can
+  skip this and just load assets from a URL/CDN or generate them in code.
 - Want a dramatic simultaneous reveal instead? Have each team commit to a branch named
   after them, and you merge all five at the end. (Adds one merge step — optional.)
 - Optional upgrade: import the repo into **Vercel** for auto-deploys + per-commit preview

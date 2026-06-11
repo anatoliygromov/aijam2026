@@ -39,8 +39,10 @@ placeholders waiting for each team to replace them.
 2. **Never touch `nav.css` or `nav.js`.** That's the shared nav: it's injected into every
    page and auto-highlights the current one. Leave the two nav lines in your file exactly
    as they are.
-3. **No build tools, no Figma.** Put your page's CSS in the `<head>` or inline; bring
-   images in as AI-generated **URLs** or data-URIs so there's nothing extra to upload.
+3. **One self-contained page, no build step.** Put your CSS in the `<head>` or inline and
+   JS in the page or from a **CDN**. Pull assets from **URLs/CDN** or data-URIs — or, if you
+   need to ship a local file (3D model, texture, audio), drop it in your **`assets/teamN/`**
+   folder and reference it relatively (e.g. `assets/team1/scene.glb`). No bundler, no Figma.
 
 ## 🧱 How it's wired
 
@@ -52,6 +54,8 @@ nav means editing one file — not five.
 
 Repo files: `index.html` · `about.html` · `team.html` · `contact.html` · `404.html`
 (the five team pages) + `nav.css` · `nav.js` · `logo.svg` (shared — hands off).
+Each team also has an **`assets/teamN/`** folder for any local files they want to ship
+(optional — most pages won't need it).
 
 ---
 
