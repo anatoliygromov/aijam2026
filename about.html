@@ -6,123 +6,142 @@
 <title>Umain — About</title>
 <link rel="stylesheet" href="nav.css">
 <!-- Add your own page styles below this line -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=MedievalSharp&family=Metamorphous&family=UnifrakturMaguntia&display=swap" rel="stylesheet">
 <style>
-/* ===== Team 2 · About — Renaissance frame, teenage-engineering page style ===== */
+/* ===== Team 2 · About — medieval renaissance, EP-1320 page language ===== */
 
 :root{
-  --gold:#c9a24f;
-  --ink:#f2f0eb;
-  --ink-dim:#c9c6bf;
-  --ink-faint:#8f8c85;
-  --line:rgba(242,240,235,.16);
-  --serif:"Times New Roman",Times,Georgia,serif;
+  --ink:#3E1815;
+  --red:#B22E20;
+  --parchment:#DCD8CF;
+  --khaki:#BAB496;
+  --paper:#fff;
+  --blackletter:"UnifrakturMaguntia",serif;
+  --hand:"MedievalSharp",serif;
+  --carved:"Cinzel Decorative",serif;
+  --stone:"Metamorphous",serif;
 }
 
-html{scroll-behavior:auto}
-main{display:block;background:#000;color:var(--ink);overflow:clip}
-main *,main *::before,main *::after{box-sizing:border-box}
-main ::selection{background:var(--gold);color:#000}
+/* page ground: white like teenage engineering, ink text */
+body{background:var(--paper);color:var(--ink)}
 
+/* ---- header tab bar, redone in the theme (CSS overrides only) ---- */
+.um-topbar{background:var(--paper)}
+.um-brand svg{display:none}
+.um-brand::after{content:"umain";font-family:var(--blackletter);font-size:36px;line-height:1;color:var(--red)}
+.um-pill{background:transparent}
+.um-pill a{font-family:var(--hand);font-weight:400;font-size:17px;letter-spacing:0;color:var(--ink);border-radius:8px 12px 10px 14px}
+.um-pill a:hover{background:rgba(62,24,21,.08)}
+.um-pill a.active{background:var(--red);color:var(--parchment);border-radius:10px 14px 8px 12px}
+.um-eidra{font-family:var(--blackletter);font-weight:400;color:var(--ink)}
+.um-burger{background:var(--red);color:var(--parchment);font-family:var(--hand);font-weight:400;border-radius:10px 14px 8px 12px}
+@media (max-width:880px){
+  .um-topbar.um-open .um-pill{background:var(--parchment)}
+}
+
+main{display:block;background:var(--paper);color:var(--ink);overflow:clip;text-align:center}
+main *,main *::before,main *::after{box-sizing:border-box}
+main ::selection{background:var(--red);color:var(--parchment)}
 main a{color:inherit}
-main a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+main a:focus-visible,main button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
 
 /* ---- pinned stage: hero + motto ---- */
-.ab-stage{position:relative;height:100vh;height:100svh;overflow:hidden}
+.md-stage{position:relative;height:100vh;height:100svh;overflow:hidden;background:var(--ink)}
+.md-hero-media{position:absolute;inset:0;z-index:1;will-change:transform}
+.md-hero-media img,.md-hero-media video{width:100%;height:100%;object-fit:cover;display:block}
+.md-hero-veil{position:absolute;inset:0;z-index:2;background:#1c0d0a;opacity:.15;pointer-events:none;will-change:opacity}
 
-.ab-hero-media{position:absolute;inset:0;z-index:1;will-change:transform}
-.ab-hero-media img,
-.ab-hero-media video{width:100%;height:100%;object-fit:cover;display:block}
+.md-hero-copy{position:absolute;left:0;right:0;bottom:46px;z-index:3;will-change:transform,opacity}
+.md-hero-copy h1{font-family:var(--blackletter);font-weight:400;font-size:clamp(30px,4.2vw,58px);line-height:1.05;color:var(--parchment);margin:0 0 10px}
+.md-hero-copy p{font-family:var(--hand);font-size:clamp(14px,1.2vw,18px);color:var(--parchment);opacity:.85;margin:0}
+.md-scroll-hint{position:absolute;left:0;right:0;bottom:12px;z-index:3;font-family:var(--hand);font-size:14px;color:var(--parchment);opacity:.6}
 
-.ab-hero-veil{position:absolute;inset:0;z-index:2;background:#000;opacity:.18;pointer-events:none;will-change:opacity}
+.md-motto{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;pointer-events:none}
+.md-motto h2{font-family:var(--blackletter);font-weight:400;font-size:clamp(58px,12vw,180px);letter-spacing:.01em;line-height:.95;margin:0;color:var(--parchment)}
+.md-motto .md-w{display:inline-block;opacity:0;will-change:transform,opacity,filter}
+.md-motto-sub{font-family:var(--hand);font-size:clamp(16px,1.7vw,24px);line-height:1.55;color:var(--parchment);max-width:46ch;margin:34px auto 0;opacity:0;will-change:transform,opacity}
 
-.ab-hero-copy{position:absolute;left:40px;bottom:40px;z-index:3;will-change:transform,opacity}
-.ab-hero-copy .ab-placard-era{font-family:var(--serif);font-style:italic;font-size:16px;color:var(--gold);margin:0 0 10px}
-.ab-hero-copy h1{font-size:clamp(28px,3.4vw,44px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0 0 8px;max-width:18ch}
-.ab-hero-copy p{font-size:15px;color:var(--ink-dim);margin:0;letter-spacing:.01em}
+/* ---- red hand-drawn divider bands (stolen with pride) ---- */
+.md-band{display:block;width:100%;height:64px;margin:0;line-height:0}
+.md-band svg{width:100%;height:100%;display:block}
 
-.ab-scroll-hint{position:absolute;right:40px;bottom:44px;z-index:3;font-size:13px;color:var(--ink-faint);letter-spacing:.04em}
+/* ---- sections: narrow centered columns, te sizes ---- */
+.md-section{max-width:1100px;margin:0 auto;padding:110px 24px 0}
+.md-section:last-of-type{padding-bottom:130px}
+.md-section h2{font-family:var(--blackletter);font-weight:400;font-size:clamp(36px,5vw,84px);line-height:1.02;margin:0 auto 30px;max-width:18ch;color:var(--ink)}
+.md-section .md-lede{font-family:var(--stone);font-size:clamp(15px,1.35vw,20px);line-height:1.65;max-width:44ch;margin:0 auto 16px}
+.md-section p{font-family:var(--hand);font-size:clamp(14px,1.15vw,18px);line-height:1.7;max-width:52ch;margin:0 auto 16px}
 
-.ab-motto{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 24px;pointer-events:none}
-.ab-motto h2{font-size:clamp(56px,12.5vw,190px);font-weight:700;letter-spacing:-.035em;line-height:.95;margin:0}
-.ab-motto .ab-w{display:inline-block;opacity:0;will-change:transform,opacity,filter}
-.ab-motto-sub{font-size:clamp(17px,2vw,26px);font-weight:500;line-height:1.45;color:var(--ink-dim);max-width:52ch;margin:36px auto 0;opacity:0;will-change:transform,opacity}
+.md-ill{margin:46px auto 0;width:min(240px,52vw)}
+.md-ill svg{width:100%;height:auto;display:block}
 
-/* ---- shared section scaffolding ---- */
-.ab-section{max-width:1280px;margin:0 auto;padding:150px 40px 0}
-.ab-section:last-of-type{padding-bottom:170px}
-.ab-era{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold);margin:0 0 18px}
-.ab-section h2{font-size:clamp(34px,5.6vw,84px);font-weight:700;letter-spacing:-.03em;line-height:1.02;margin:0 0 34px;max-width:16ch}
-.ab-section .ab-lede{font-size:clamp(17px,1.5vw,21px);line-height:1.6;color:var(--ink);max-width:58ch;margin:0 0 18px}
-.ab-section p{font-size:17px;line-height:1.65;color:var(--ink-dim);max-width:62ch;margin:0 0 18px}
+/* ---- timeline: an illuminated chronicle ---- */
+.md-timeline{margin:64px auto 0;position:relative;max-width:560px;padding-left:42px;text-align:left}
+.md-timeline::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:2px;background:rgba(62,24,21,.18)}
+.md-timeline .md-rule{position:absolute;left:0;top:6px;bottom:6px;width:2px;background:var(--red);transform-origin:top;transform:scaleY(0);will-change:transform}
+.md-entry{padding:0 0 56px}
+.md-entry:last-child{padding-bottom:0}
+.md-entry .md-anno{font-family:var(--carved);font-size:13px;letter-spacing:.12em;color:var(--red);margin:0 0 8px}
+.md-entry h3{font-family:var(--blackletter);font-weight:400;font-size:clamp(26px,2.6vw,40px);margin:0 0 8px}
+.md-entry p{margin:0;max-width:46ch}
 
-.ab-orn{display:flex;justify-content:center;align-items:center;gap:26px;margin:150px auto 0;max-width:1280px;padding:0 40px;color:var(--gold)}
-.ab-orn::before,.ab-orn::after{content:"";height:1px;flex:1;max-width:140px;background:var(--line)}
-.ab-orn span{font-size:20px;line-height:1}
+/* ---- the great map ---- */
+.md-map-wrap{position:relative;margin:64px auto 0;max-width:1100px}
+.md-map-wrap svg.md-map{width:100%;height:auto;display:block}
+.md-pin{position:absolute;transform:translate(-50%,-50%);background:none;border:0;padding:14px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.md-pin-dot{display:block;width:20px;height:20px;background:var(--red);border:2px solid var(--ink);border-radius:46% 54% 52% 48%/52% 48% 54% 46%;box-shadow:0 1px 0 rgba(62,24,21,.4);transition:transform .25s ease}
+.md-pin:hover .md-pin-dot,.md-pin:focus-visible .md-pin-dot,.md-pin[aria-pressed="true"] .md-pin-dot{transform:scale(1.45)}
+.md-pin-label{position:absolute;left:50%;bottom:calc(100% - 4px);transform:translateX(-50%) scale(.9);transform-origin:bottom center;background:var(--red);color:var(--parchment);font-family:var(--blackletter);font-size:17px;line-height:1;padding:9px 14px 10px;border-radius:10px 14px 8px 12px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+.md-pin:hover .md-pin-label,.md-pin:focus-visible .md-pin-label,.md-pin[aria-pressed="true"] .md-pin-label{opacity:1;transform:translateX(-50%) scale(1)}
 
-/* ---- timeline ---- */
-.ab-timeline{margin-top:64px;position:relative;padding-left:40px}
-.ab-timeline::before{content:"";position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--line)}
-.ab-timeline .ab-rule{position:absolute;left:0;top:6px;bottom:6px;width:1px;background:var(--gold);transform-origin:top;transform:scaleY(0);will-change:transform}
-.ab-entry{padding:0 0 64px;max-width:60ch}
-.ab-entry:last-child{padding-bottom:0}
-.ab-entry .ab-era{margin-bottom:10px}
-.ab-entry h3{font-size:clamp(24px,2.6vw,38px);font-weight:700;letter-spacing:-.02em;margin:0 0 10px}
-.ab-entry p{margin:0}
+.md-map-panel{margin:26px auto 0;max-width:560px;background:var(--parchment);border:2px solid var(--ink);border-radius:14px 18px 12px 20px/18px 12px 20px 14px;padding:26px 30px 30px}
+.md-map-panel h3{font-family:var(--blackletter);font-weight:400;font-size:clamp(28px,3vw,44px);color:var(--red);margin:0 0 4px}
+.md-map-panel .md-anno{font-family:var(--carved);font-size:13px;letter-spacing:.12em;margin:0 0 12px}
+.md-map-panel p{font-family:var(--hand);font-size:clamp(14px,1.15vw,17px);line-height:1.65;margin:0;max-width:none}
 
-/* ---- artwork frame / image slot ---- */
-.ab-frame{margin:72px 0 0;border:1px solid var(--gold);padding:14px;max-width:880px}
-.ab-frame .ab-canvas{position:relative;background:#0d0c0a;overflow:hidden}
-.ab-frame .ab-canvas::before{content:"";display:block;padding-top:56%}
-.ab-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:transform}
-.ab-frame .ab-empty{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-style:italic;font-size:15px;color:var(--ink-faint)}
-.ab-frame figcaption{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-faint);padding:12px 2px 0;text-align:left}
+/* ---- the three arts ---- */
+.md-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:60px}
+.md-pillar .md-ill{margin-top:0;width:min(190px,46vw)}
+.md-pillar h3{font-family:var(--blackletter);font-weight:400;font-size:clamp(28px,3vw,46px);margin:18px 0 10px}
+.md-pillar p{font-size:clamp(13px,1.05vw,16px);max-width:34ch}
 
-/* ---- cities grid ---- */
-.ab-cities{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:64px;border-top:1px solid var(--line)}
-.ab-city{border-bottom:1px solid var(--line);padding:26px 18px 30px 0}
-.ab-city h3{font-size:clamp(22px,2.4vw,34px);font-weight:700;letter-spacing:-.02em;margin:0 0 8px}
-.ab-city p{font-size:14px;color:var(--ink-faint);margin:0;max-width:none}
+/* ---- spec rows, te style in ink ---- */
+.md-specs{margin:84px auto 0;max-width:720px;text-align:left}
+.md-specs h3{font-family:var(--blackletter);font-weight:400;font-size:clamp(24px,2.4vw,36px);text-align:center;margin:0 0 24px}
+.md-spec-row{display:grid;grid-template-columns:minmax(150px,36%) 1fr;gap:22px;border-top:1px solid rgba(62,24,21,.3);padding:15px 0}
+.md-spec-row:last-child{border-bottom:1px solid rgba(62,24,21,.3)}
+.md-spec-row dt{font-family:var(--stone);font-size:14px;margin:0}
+.md-spec-row dd{font-family:var(--hand);font-size:14px;margin:0;color:rgba(62,24,21,.85)}
 
-/* ---- pillars ---- */
-.ab-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:48px;margin-top:64px}
-.ab-pillar h3{font-size:clamp(24px,2.6vw,38px);font-weight:700;letter-spacing:-.02em;margin:0 0 14px}
-.ab-pillar p{font-size:16px;margin:0;max-width:none}
+/* ---- allies + closing ---- */
+.md-section p.md-clients{font-family:var(--stone);font-size:clamp(16px,1.6vw,22px);line-height:2;max-width:36em;margin:48px auto 0}
+.md-clients span{color:var(--red)}
 
-/* ---- spec list (teenage engineering style) ---- */
-.ab-specs{margin-top:88px}
-.ab-specs h3{font-size:clamp(20px,2vw,28px);font-weight:700;letter-spacing:-.02em;margin:0 0 22px}
-.ab-spec-row{display:grid;grid-template-columns:minmax(140px,32%) 1fr;gap:24px;border-top:1px solid var(--line);padding:16px 0}
-.ab-spec-row:last-child{border-bottom:1px solid var(--line)}
-.ab-spec-row dt{font-size:14px;font-weight:700;margin:0}
-.ab-spec-row dd{font-size:14px;color:var(--ink-dim);margin:0}
+.md-btn{position:relative;display:inline-block;font-family:var(--blackletter);font-size:clamp(22px,2.2vw,34px);line-height:1;color:var(--parchment);text-decoration:none;padding:20px 44px 24px;margin-top:54px}
+.md-btn svg{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.md-btn span{position:relative;z-index:1}
+.md-btn:hover{transform:rotate(-1deg) scale(1.03)}
+.md-btn{transition:transform .25s ease}
+.md-section p.md-cta-note{font-family:var(--hand);font-size:15px;margin-top:18px;opacity:.8}
 
-/* ---- trust ---- */
-.ab-clients{font-size:clamp(17px,1.9vw,24px);line-height:1.8;color:var(--ink-dim);max-width:none;margin:56px 0 0}
-.ab-clients b{font-weight:700;color:var(--ink)}
+.md-section p.md-wordmark{font-family:var(--blackletter);font-weight:400;font-size:clamp(80px,16vw,240px);line-height:1;color:var(--red);margin:90px 0 0}
 
-/* ---- closing ---- */
-.ab-cta{margin-top:64px}
-.ab-cta a{display:inline-block;font-size:clamp(40px,7vw,104px);font-weight:700;letter-spacing:-.03em;text-decoration:none;border-bottom:3px solid var(--gold);padding-bottom:10px}
-.ab-cta a:hover{color:var(--gold)}
-.ab-cta p{margin:22px 0 0;font-size:15px;color:var(--ink-faint)}
-
-/* ---- reveals: visible by default, JS sets initial states ---- */
-.ab-reveal{will-change:transform,opacity}
+.md-reveal{will-change:transform,opacity}
 
 @media (max-width:880px){
-  .ab-hero-copy{left:20px;bottom:28px;right:20px}
-  .ab-scroll-hint{display:none}
-  .ab-section{padding:96px 20px 0}
-  .ab-section:last-of-type{padding-bottom:120px}
-  .ab-orn{margin-top:96px;padding:0 20px}
-  .ab-timeline{padding-left:24px}
-  .ab-cities{grid-template-columns:1fr 1fr}
-  .ab-pillars{grid-template-columns:1fr;gap:36px}
-  .ab-spec-row{grid-template-columns:1fr;gap:6px}
+  .md-section{padding:80px 20px 0}
+  .md-section:last-of-type{padding-bottom:100px}
+  .md-pillars{grid-template-columns:1fr;gap:48px}
+  .md-spec-row{grid-template-columns:1fr;gap:6px}
+  .md-pin{padding:10px}
+  .md-pin-dot{width:15px;height:15px}
+  .md-pin-label{font-size:14px}
 }
 
 @media (prefers-reduced-motion:reduce){
-  .ab-motto .ab-w,.ab-motto-sub{opacity:1}
+  .md-motto .md-w,.md-motto-sub{opacity:1}
 }
 </style>
 </head>
@@ -137,247 +156,456 @@ main a:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
      Edit ONLY this file. Don't touch nav.css or nav.js — that's the shared nav. -->
 <main>
 
+  <!-- shared hand-drawn filters -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="md-rough" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.012 0.03" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="7"/>
+      </filter>
+      <filter id="md-rough-soft" x="-5%" y="-5%" width="110%" height="110%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.02 0.05" numOctaves="2" seed="11" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+      </filter>
+      <!-- ink curl, as on the ep-1320 bands -->
+      <path id="md-curl" d="M0,6 c12,-16 32,-11 32,2 c0,10 -11,15 -18,8 c-4,-5 0,-12 7,-9" fill="none" stroke="#3E1815" stroke-width="3.6" stroke-linecap="round"/>
+      <!-- wobbly button plate -->
+      <path id="md-btnplate" d="M10,8 C70,3 150,10 250,6 C256,20 252,42 254,55 C180,61 70,57 8,58 C4,40 8,22 10,8 Z" fill="#B22E20"/>
+    </defs>
+  </svg>
+
   <!-- ============ pinned stage: hero + motto ============ -->
-  <section class="ab-stage" id="ab-stage" aria-label="Umain — shape, ship, scale">
+  <section class="md-stage" id="md-stage" aria-label="umain — shape, ship, scale">
 
     <!-- HERO MEDIA SLOT ——————————————————————————————————————————
-         Image now, video later. To swap in the video, replace the <img>
-         with:
-         <video src="YOUR_VIDEO_URL" autoplay muted loop playsinline></video>
-         The parallax animation targets .ab-hero-media, so it works for both. -->
-    <div class="ab-hero-media">
-      <img src="assets/team2/Renaissance Painting Collage.png"
-           alt="Collage of Renaissance paintings">
+         Scroll-driven film. dancing-hero-scrub.mp4 is an all-keyframe re-encode
+         of "Dreamina Dancing People June 2026.mp4" so currentTime scrubbing is
+         smooth. The film plays as you scroll; when it ends, the motto rises. -->
+    <div class="md-hero-media">
+      <video id="md-hero-video" src="assets/team2/dancing-hero-scrub.mp4"
+             muted playsinline preload="auto"
+             aria-label="Film of dancing people"></video>
     </div>
 
-    <div class="ab-hero-veil"></div>
+    <div class="md-hero-veil"></div>
 
-    <div class="ab-hero-copy">
-      <p class="ab-placard-era">About</p>
-      <h1>Umain, a digital product agency</h1>
-      <p>Stockholm · Oslo · London · Chicago</p>
+    <div class="md-hero-copy">
+      <h1>umain, a guild of digital craftsmen</h1>
+      <p>stockholm · oslo · london · chicago</p>
     </div>
+    <p class="md-scroll-hint">scroll, traveller</p>
 
-    <p class="ab-scroll-hint">scroll</p>
-
-    <div class="ab-motto">
+    <div class="md-motto">
       <h2>
-        <span class="ab-w">Shape.</span>
-        <span class="ab-w">Ship.</span>
-        <span class="ab-w">Scale.</span>
+        <span class="md-w">shape.</span>
+        <span class="md-w">ship.</span>
+        <span class="md-w">scale.</span>
       </h2>
-      <p class="ab-motto-sub">We help bold brands and ambitious disruptors shape, ship
-        and scale digital products — design and technology, end to end, all in-house.</p>
+      <p class="md-motto-sub">we help bold brands and ambitious disruptors shape, ship
+        and scale digital products — design and technology, end to end, all under one roof.</p>
     </div>
 
   </section>
 
-  <!-- ============ story + timeline ============ -->
-  <section class="ab-section" aria-labelledby="ab-story-h">
-    <p class="ab-era ab-reveal">Where we come from</p>
-    <h2 id="ab-story-h" class="ab-reveal">A studio built on one conviction</h2>
-    <p class="ab-lede ab-reveal">Umain began in Stockholm with a simple belief: design and
-      engineering belong in the same room. Not handed off between departments — built
-      together, by people who care about both.</p>
-    <p class="ab-reveal">That belief became a craft, and the craft became a company. Today we
-      are 130+ designers, engineers and product thinkers across four cities, shipping digital
-      products for some of the boldest brands in the world.</p>
+  <div class="md-band" role="presentation"><svg viewBox="0 0 1600 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,14 C100,8 220,18 340,12 C460,6 580,16 700,11 C820,6 940,17 1060,12 C1180,7 1300,16 1420,11 C1500,8 1560,13 1600,11 L1600,66 C1500,72 1380,62 1260,68 C1140,74 1020,63 900,69 C780,75 660,64 540,70 C420,76 300,65 180,70 C100,73 40,68 0,70 Z" fill="#B22E20" filter="url(#md-rough)"/>
+    <g filter="url(#md-rough-soft)">
+      <use href="#md-curl" x="30" y="32"/><use href="#md-curl" x="106" y="34"/><use href="#md-curl" x="182" y="31"/><use href="#md-curl" x="258" y="34"/><use href="#md-curl" x="334" y="32"/><use href="#md-curl" x="410" y="34"/><use href="#md-curl" x="486" y="31"/><use href="#md-curl" x="562" y="33"/><use href="#md-curl" x="638" y="32"/><use href="#md-curl" x="714" y="34"/><use href="#md-curl" x="790" y="31"/><use href="#md-curl" x="866" y="33"/><use href="#md-curl" x="942" y="32"/><use href="#md-curl" x="1018" y="34"/><use href="#md-curl" x="1094" y="31"/><use href="#md-curl" x="1170" y="33"/><use href="#md-curl" x="1246" y="32"/><use href="#md-curl" x="1322" y="34"/><use href="#md-curl" x="1398" y="31"/><use href="#md-curl" x="1474" y="33"/><use href="#md-curl" x="1550" y="32"/>
+    </g>
+  </svg></div>
 
-    <div class="ab-timeline">
-      <div class="ab-rule"></div>
-      <div class="ab-entry ab-reveal">
-        <p class="ab-era">The beginning</p>
-        <h3>Stockholm</h3>
-        <p>A studio founded on the belief that great digital products come from design and
+  <!-- ============ the chronicle ============ -->
+  <section class="md-section" aria-labelledby="md-story-h">
+    <h2 id="md-story-h" class="md-reveal">a guild built on one conviction</h2>
+    <p class="md-lede md-reveal">umain began in stockholm with a simple belief: design and
+      engineering belong in the same room.</p>
+    <p class="md-reveal">not handed off between departments — built together, by people who care
+      about both. that belief became a craft, and the craft became a company. today we are 130+
+      designers, engineers and product thinkers across four cities, shipping digital products for
+      some of the boldest brands in the world.</p>
+
+    <!-- quill and hammer, crossed: the guild mark -->
+    <div class="md-ill md-reveal" role="img" aria-label="Ink drawing of a crossed quill and hammer">
+      <svg viewBox="0 0 220 200">
+        <g fill="none" stroke="#3E1815" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#md-rough-soft)">
+          <path d="M45,40 C70,58 130,110 168,156"/>
+          <path d="M45,40 C58,38 70,44 78,56 C66,56 56,50 45,40 Z" fill="#3E1815"/>
+          <path d="M168,156 l14,12"/>
+          <path d="M175,38 C150,60 95,112 55,156"/>
+          <path d="M160,24 l32,28 l-12,14 l-32,-28 Z"/>
+          <path d="M55,156 l-12,14"/>
+          <path d="M110,178 c-26,0 -48,-6 -48,-6 m96,6 c16,0 30,-3 38,-6" stroke-width="3.6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="md-timeline">
+      <div class="md-rule"></div>
+      <div class="md-entry md-reveal">
+        <p class="md-anno">THE BEGINNING</p>
+        <h3>stockholm</h3>
+        <p>a studio founded on the belief that great digital products come from design and
           engineering working as one.</p>
       </div>
-      <div class="ab-entry ab-reveal">
-        <p class="ab-era">The expansion</p>
-        <h3>Four cities</h3>
-        <p>Stockholm, Oslo, London and Chicago. Same craft, four time zones.</p>
+      <div class="md-entry md-reveal">
+        <p class="md-anno">THE EXPANSION</p>
+        <h3>four cities</h3>
+        <p>stockholm, oslo, london and chicago. same craft, four time zones.</p>
       </div>
-      <div class="ab-entry ab-reveal">
-        <p class="ab-era">The collective</p>
-        <h3>Part of Eidra</h3>
-        <p>We joined Eidra, a consultancy collective of 1,400 people across 50+
-          nationalities — consulting, creativity, engineering and data under one roof.</p>
+      <div class="md-entry md-reveal">
+        <p class="md-anno">THE COLLECTIVE</p>
+        <h3>part of eidra</h3>
+        <p>we joined eidra, a consultancy collective of 1,400 people across 50+ nationalities —
+          consulting, creativity, engineering and data under one banner.</p>
       </div>
-      <div class="ab-entry ab-reveal">
-        <p class="ab-era">Today</p>
+      <div class="md-entry md-reveal">
+        <p class="md-anno">TODAY</p>
         <h3>130+ people</h3>
-        <p>Designers, engineers and product thinkers. End to end, all in-house.</p>
-      </div>
-    </div>
-
-    <!-- ARTWORK SLOT — paste an image URL in src and remove .ab-empty -->
-    <figure class="ab-frame ab-reveal">
-      <div class="ab-canvas">
-        <span class="ab-empty">image slot — paste url</span>
-      </div>
-      <figcaption>The studio, as the old masters might have painted it.</figcaption>
-    </figure>
-  </section>
-
-  <div class="ab-orn" role="presentation"><span>❦</span></div>
-
-  <!-- ============ people + place ============ -->
-  <section class="ab-section" aria-labelledby="ab-people-h">
-    <p class="ab-era ab-reveal">People and place</p>
-    <h2 id="ab-people-h" class="ab-reveal">Consultancies are their people</h2>
-    <p class="ab-lede ab-reveal">Ours sit in four studios, work in cross-functional teams, and
-      stay close to the products they build — from first sketch to global rollout.</p>
-
-    <div class="ab-cities">
-      <div class="ab-city ab-reveal">
-        <h3>Stockholm</h3>
-        <p>Where it began</p>
-      </div>
-      <div class="ab-city ab-reveal">
-        <h3>Oslo</h3>
-        <p>Nordic reach</p>
-      </div>
-      <div class="ab-city ab-reveal">
-        <h3>London</h3>
-        <p>European hub</p>
-      </div>
-      <div class="ab-city ab-reveal">
-        <h3>Chicago</h3>
-        <p>North America</p>
+        <p>designers, engineers and product thinkers. end to end, all under one roof.</p>
       </div>
     </div>
   </section>
 
-  <div class="ab-orn" role="presentation"><span>❦</span></div>
+  <div class="md-band" role="presentation"><svg viewBox="0 0 1600 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,12 C120,18 240,8 360,14 C480,20 600,9 720,14 C840,19 960,8 1080,13 C1200,18 1320,9 1440,13 C1520,16 1570,12 1600,13 L1600,68 C1480,62 1360,72 1240,66 C1120,60 1000,71 880,66 C760,61 640,72 520,67 C400,62 280,72 160,67 C80,64 30,68 0,67 Z" fill="#B22E20" filter="url(#md-rough)"/>
+    <g filter="url(#md-rough-soft)">
+      <use href="#md-curl" x="48" y="33"/><use href="#md-curl" x="124" y="31"/><use href="#md-curl" x="200" y="34"/><use href="#md-curl" x="276" y="32"/><use href="#md-curl" x="352" y="33"/><use href="#md-curl" x="428" y="31"/><use href="#md-curl" x="504" y="34"/><use href="#md-curl" x="580" y="32"/><use href="#md-curl" x="656" y="33"/><use href="#md-curl" x="732" y="31"/><use href="#md-curl" x="808" y="34"/><use href="#md-curl" x="884" y="32"/><use href="#md-curl" x="960" y="33"/><use href="#md-curl" x="1036" y="31"/><use href="#md-curl" x="1112" y="34"/><use href="#md-curl" x="1188" y="32"/><use href="#md-curl" x="1264" y="33"/><use href="#md-curl" x="1340" y="31"/><use href="#md-curl" x="1416" y="34"/><use href="#md-curl" x="1492" y="32"/><use href="#md-curl" x="1560" y="33"/>
+    </g>
+  </svg></div>
 
-  <!-- ============ how we work ============ -->
-  <section class="ab-section" aria-labelledby="ab-work-h">
-    <p class="ab-era ab-reveal">How we work</p>
-    <h2 id="ab-work-h" class="ab-reveal">Three words, one product lifecycle</h2>
+  <!-- ============ the great map ============ -->
+  <section class="md-section" aria-labelledby="md-map-h">
+    <h2 id="md-map-h" class="md-reveal">our dominions</h2>
+    <p class="md-lede md-reveal">four studios across the known world. choose a city on the chart
+      to read of it.</p>
 
-    <div class="ab-pillars">
-      <div class="ab-pillar ab-reveal">
-        <h3>Shape</h3>
-        <p>We shape visions, strategies, business cases, roadmaps and prototypes — with a
-          highly collaborative approach, in deep partnership with our clients.</p>
+    <div class="md-map-wrap md-reveal">
+      <svg class="md-map" viewBox="0 0 1600 1000" aria-hidden="true">
+        <!-- parchment -->
+        <rect x="0" y="0" width="1600" height="1000" fill="#DCD8CF"/>
+        <ellipse cx="300" cy="180" rx="240" ry="110" fill="#BAB496" opacity=".18"/>
+        <ellipse cx="1300" cy="760" rx="300" ry="140" fill="#BAB496" opacity=".16"/>
+        <ellipse cx="800" cy="500" rx="500" ry="300" fill="#fff" opacity=".12"/>
+        <!-- frame -->
+        <rect x="22" y="22" width="1556" height="956" fill="none" stroke="#3E1815" stroke-width="4" filter="url(#md-rough)"/>
+        <rect x="40" y="40" width="1520" height="920" fill="none" stroke="#3E1815" stroke-width="1.6" filter="url(#md-rough)"/>
+        <!-- rhumb lines -->
+        <g stroke="#BAB496" stroke-width="1.1" opacity=".8">
+          <line x1="620" y1="700" x2="1560" y2="60"/><line x1="620" y1="700" x2="1560" y2="700"/>
+          <line x1="620" y1="700" x2="1560" y2="380"/><line x1="620" y1="700" x2="1200" y2="40"/>
+          <line x1="620" y1="700" x2="620" y2="40"/><line x1="620" y1="700" x2="60" y2="120"/>
+          <line x1="620" y1="700" x2="40" y2="520"/><line x1="620" y1="700" x2="40" y2="860"/>
+          <line x1="620" y1="700" x2="1100" y2="960"/><line x1="620" y1="700" x2="300" y2="960"/>
+        </g>
+        <!-- the new world, west -->
+        <g filter="url(#md-rough)">
+          <path d="M40,90 C120,110 200,130 280,170 C330,196 340,240 300,268 C260,294 250,330 290,352 C340,378 350,420 320,452 C290,484 300,530 280,580 C260,630 220,668 180,700 C140,732 90,752 40,760 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="4" stroke-linejoin="round"/>
+          <!-- great lakes -->
+          <path d="M150,350 c20,-14 48,-10 58,4 c10,14 -4,28 -22,28 c-18,0 -50,-14 -36,-32 Z" fill="#DCD8CF" stroke="#3E1815" stroke-width="2.4"/>
+          <path d="M226,332 c16,-10 36,-4 40,8 c4,12 -8,22 -24,18 c-16,-4 -30,-16 -16,-26 Z" fill="#DCD8CF" stroke="#3E1815" stroke-width="2.4"/>
+        </g>
+        <!-- british isles -->
+        <g filter="url(#md-rough)">
+          <path d="M920,360 C950,344 980,356 978,392 C976,420 990,440 984,472 C978,506 960,540 930,552 C904,562 888,540 898,512 C908,486 896,462 904,432 C910,408 902,378 920,360 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M848,430 C868,416 892,424 890,448 C888,472 868,490 848,484 C830,478 832,442 848,430 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="3" stroke-linejoin="round"/>
+        </g>
+        <!-- scandinavia -->
+        <g filter="url(#md-rough)">
+          <path d="M1120,40 C1100,120 1080,200 1096,280 C1106,330 1128,372 1162,392 C1196,412 1240,400 1262,360 C1284,320 1300,260 1310,200 C1320,140 1330,80 1334,40 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M1170,440 c24,-12 52,-4 54,16 c2,18 -20,32 -42,26 c-20,-6 -32,-30 -12,-42 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M1090,640 C1190,660 1300,650 1420,670 C1490,682 1550,700 1560,710 L1560,960 L1090,960 C1070,860 1070,740 1090,640 Z"
+                fill="#cfcab2" stroke="#3E1815" stroke-width="4" stroke-linejoin="round"/>
+        </g>
+        <!-- compass rose -->
+        <g transform="translate(620,700)" filter="url(#md-rough-soft)">
+          <circle r="86" fill="none" stroke="#3E1815" stroke-width="2.4"/>
+          <circle r="64" fill="none" stroke="#3E1815" stroke-width="1.4"/>
+          <path d="M0,-80 L12,-12 L80,0 L12,12 L0,80 L-12,12 L-80,0 L-12,-12 Z" fill="#B22E20" stroke="#3E1815" stroke-width="2.4" stroke-linejoin="round"/>
+          <path d="M0,-46 L8,-8 L46,0 L8,8 L0,46 L-8,8 L-46,0 L-8,-8 Z" transform="rotate(45)" fill="#DCD8CF" stroke="#3E1815" stroke-width="2"/>
+          <circle r="7" fill="#3E1815"/>
+          <text y="-98" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="26" fill="#3E1815">N</text>
+        </g>
+        <!-- sea serpent -->
+        <g fill="none" stroke="#3E1815" stroke-width="5" stroke-linecap="round" filter="url(#md-rough-soft)" class="md-serpent">
+          <path d="M430,500 c20,-34 56,-34 74,0"/>
+          <path d="M530,500 c20,-34 56,-34 74,0"/>
+          <path d="M630,500 c14,-24 36,-30 54,-16 c12,10 12,26 0,34 l-22,2"/>
+          <path d="M684,512 l22,10 m-22,-10 l24,-2" stroke-width="3.6"/>
+          <circle cx="664" cy="496" r="2.6" fill="#3E1815" stroke="none"/>
+        </g>
+        <!-- the galleon -->
+        <g class="md-ship" fill="none" stroke="#3E1815" stroke-width="4.6" stroke-linecap="round" stroke-linejoin="round" filter="url(#md-rough-soft)">
+          <path d="M760,330 C770,352 830,352 842,330 L832,316 L770,316 Z" fill="#cfcab2"/>
+          <path d="M800,316 L800,250"/>
+          <path d="M772,262 C788,254 812,254 828,262 L824,298 C808,290 792,290 776,298 Z" fill="#DCD8CF"/>
+          <path d="M800,250 l20,8 l-20,6 Z" fill="#B22E20" stroke-width="3"/>
+          <path d="M742,344 c10,8 24,8 34,0 c10,8 24,8 34,0 c10,8 24,8 34,0" stroke-width="3"/>
+        </g>
+        <!-- chart lettering -->
+        <text x="620" y="560" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="34" letter-spacing="8" fill="#3E1815" opacity=".7">MARE INCOGNITVM</text>
+        <text x="170" y="250" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="24" letter-spacing="5" fill="#3E1815" opacity=".65">TERRA NOVA</text>
+        <text x="540" y="452" text-anchor="middle" font-family="MedievalSharp,serif" font-size="18" fill="#3E1815" opacity=".7" transform="rotate(-3 540 452)">hic sunt dracones</text>
+        <!-- wave ticks -->
+        <g stroke="#3E1815" stroke-width="2" opacity=".4" fill="none">
+          <path d="M460,640 c8,-6 16,-6 24,0 m20,0 c8,-6 16,-6 24,0"/>
+          <path d="M880,600 c8,-6 16,-6 24,0 m20,0 c8,-6 16,-6 24,0"/>
+          <path d="M960,220 c8,-6 16,-6 24,0 m20,0 c8,-6 16,-6 24,0"/>
+          <path d="M400,820 c8,-6 16,-6 24,0 m20,0 c8,-6 16,-6 24,0"/>
+          <path d="M740,460 c8,-6 16,-6 24,0 m20,0 c8,-6 16,-6 24,0"/>
+        </g>
+      </svg>
+
+      <!-- interactive markers (html overlay, keyboard friendly) -->
+      <button class="md-pin" style="left:13.5%;top:39%" data-city="chicago" aria-pressed="false">
+        <span class="md-pin-dot"></span><span class="md-pin-label">chicago</span>
+      </button>
+      <button class="md-pin" style="left:59.5%;top:50.5%" data-city="london" aria-pressed="false">
+        <span class="md-pin-dot"></span><span class="md-pin-label">london</span>
+      </button>
+      <button class="md-pin" style="left:70.5%;top:31%" data-city="oslo" aria-pressed="false">
+        <span class="md-pin-dot"></span><span class="md-pin-label">oslo</span>
+      </button>
+      <button class="md-pin" style="left:78.5%;top:27%" data-city="stockholm" aria-pressed="true">
+        <span class="md-pin-dot"></span><span class="md-pin-label">stockholm</span>
+      </button>
+    </div>
+
+    <div class="md-map-panel md-reveal" id="md-map-panel" aria-live="polite">
+      <h3>stockholm</h3>
+      <p class="md-anno">WHERE IT BEGAN</p>
+      <p>the mother studio. founded on the conviction that design and engineering belong in the
+        same room — and still the heart of the guild.</p>
+    </div>
+  </section>
+
+  <div class="md-band" role="presentation"><svg viewBox="0 0 1600 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,14 C100,8 220,18 340,12 C460,6 580,16 700,11 C820,6 940,17 1060,12 C1180,7 1300,16 1420,11 C1500,8 1560,13 1600,11 L1600,66 C1500,72 1380,62 1260,68 C1140,74 1020,63 900,69 C780,75 660,64 540,70 C420,76 300,65 180,70 C100,73 40,68 0,70 Z" fill="#B22E20" filter="url(#md-rough)"/>
+    <g filter="url(#md-rough-soft)">
+      <use href="#md-curl" x="30" y="32"/><use href="#md-curl" x="106" y="34"/><use href="#md-curl" x="182" y="31"/><use href="#md-curl" x="258" y="34"/><use href="#md-curl" x="334" y="32"/><use href="#md-curl" x="410" y="34"/><use href="#md-curl" x="486" y="31"/><use href="#md-curl" x="562" y="33"/><use href="#md-curl" x="638" y="32"/><use href="#md-curl" x="714" y="34"/><use href="#md-curl" x="790" y="31"/><use href="#md-curl" x="866" y="33"/><use href="#md-curl" x="942" y="32"/><use href="#md-curl" x="1018" y="34"/><use href="#md-curl" x="1094" y="31"/><use href="#md-curl" x="1170" y="33"/><use href="#md-curl" x="1246" y="32"/><use href="#md-curl" x="1322" y="34"/><use href="#md-curl" x="1398" y="31"/><use href="#md-curl" x="1474" y="33"/><use href="#md-curl" x="1550" y="32"/>
+    </g>
+  </svg></div>
+
+  <!-- ============ the three arts ============ -->
+  <section class="md-section" aria-labelledby="md-work-h">
+    <h2 id="md-work-h" class="md-reveal">the three arts of the craft</h2>
+    <p class="md-lede md-reveal">three words, one product lifecycle.</p>
+
+    <div class="md-pillars">
+      <div class="md-pillar md-reveal">
+        <div class="md-ill" role="img" aria-label="Ink drawing of a chisel carving a stone block">
+          <svg viewBox="0 0 220 200">
+            <g fill="none" stroke="#3E1815" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#md-rough-soft)">
+              <path d="M58,150 L162,150 L176,188 L44,188 Z" fill="#cfcab2"/>
+              <path d="M76,60 L120,138"/>
+              <path d="M120,138 l-8,14 l16,-4 Z" fill="#3E1815"/>
+              <path d="M150,52 l26,22 l-10,12 l-26,-22 Z" fill="#cfcab2"/>
+              <path d="M152,78 L128,106" stroke-width="4"/>
+              <path d="M96,150 l10,-12 m22,12 l8,-10" stroke-width="3"/>
+            </g>
+          </svg>
+        </div>
+        <h3>shape</h3>
+        <p>we shape visions, strategies, business cases, roadmaps and prototypes — in deep
+          partnership with our clients.</p>
       </div>
-      <div class="ab-pillar ab-reveal">
-        <h3>Ship</h3>
-        <p>We ship prototypes and product releases by testing, learning and iterating.
-          Deep experience and quality of craft, focused on what truly matters.</p>
+      <div class="md-pillar md-reveal">
+        <div class="md-ill" role="img" aria-label="Ink drawing of a galleon under sail">
+          <svg viewBox="0 0 220 200">
+            <g fill="none" stroke="#3E1815" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#md-rough-soft)">
+              <path d="M40,140 C52,170 168,170 180,140 L166,120 L54,120 Z" fill="#cfcab2"/>
+              <path d="M110,120 L110,34"/>
+              <path d="M70,46 C96,36 124,36 150,46 L144,100 C120,90 100,90 76,100 Z" fill="#DCD8CF"/>
+              <path d="M110,34 l26,10 l-26,8 Z" fill="#B22E20" stroke-width="3.6"/>
+              <path d="M30,168 c12,10 28,10 40,0 c12,10 28,10 40,0 c12,10 28,10 40,0 c12,10 28,10 40,0" stroke-width="3.4"/>
+            </g>
+          </svg>
+        </div>
+        <h3>ship</h3>
+        <p>we ship prototypes and product releases by testing, learning and iterating. deep
+          experience and quality of craft, focused on what truly matters.</p>
       </div>
-      <div class="ab-pillar ab-reveal">
-        <h3>Scale</h3>
-        <p>We scale products regionally and globally, with an obsessive focus on speed,
+      <div class="md-pillar md-reveal">
+        <div class="md-ill" role="img" aria-label="Ink drawing of a merchant's balance scale">
+          <svg viewBox="0 0 220 200">
+            <g fill="none" stroke="#3E1815" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" filter="url(#md-rough-soft)">
+              <path d="M110,40 L110,168"/>
+              <path d="M70,180 L150,180" stroke-width="6"/>
+              <path d="M46,58 L174,58"/>
+              <path d="M46,58 L30,108 M46,58 L62,108"/>
+              <path d="M26,108 C30,126 62,126 66,108 Z" fill="#cfcab2"/>
+              <path d="M174,58 L158,108 M174,58 L190,108"/>
+              <path d="M154,108 C158,126 190,126 194,108 Z" fill="#cfcab2"/>
+              <circle cx="110" cy="48" r="8" fill="#B22E20" stroke-width="3.6"/>
+            </g>
+          </svg>
+        </div>
+        <h3>scale</h3>
+        <p>we scale products regionally and globally, with an obsessive focus on speed,
           simplicity, quality and cost-effectiveness.</p>
       </div>
     </div>
 
-    <div class="ab-specs ab-reveal">
-      <h3>End to end. All in-house.</h3>
+    <div class="md-specs md-reveal">
+      <h3>end to end. all under one roof.</h3>
       <dl>
-        <div class="ab-spec-row">
-          <dt>Product strategy</dt>
+        <div class="md-spec-row">
+          <dt>product strategy</dt>
           <dd>product strategy, product management, product consulting, project management</dd>
         </div>
-        <div class="ab-spec-row">
-          <dt>Product design</dt>
+        <div class="md-spec-row">
+          <dt>product design</dt>
           <dd>ux/ui design, design systems, ux research and testing, ideation and prototyping</dd>
         </div>
-        <div class="ab-spec-row">
-          <dt>Engineering</dt>
+        <div class="md-spec-row">
+          <dt>engineering</dt>
           <dd>full stack, frontend, backend, mobile</dd>
         </div>
       </dl>
     </div>
   </section>
 
-  <div class="ab-orn" role="presentation"><span>❦</span></div>
+  <div class="md-band" role="presentation"><svg viewBox="0 0 1600 80" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,12 C120,18 240,8 360,14 C480,20 600,9 720,14 C840,19 960,8 1080,13 C1200,18 1320,9 1440,13 C1520,16 1570,12 1600,13 L1600,68 C1480,62 1360,72 1240,66 C1120,60 1000,71 880,66 C760,61 640,72 520,67 C400,62 280,72 160,67 C80,64 30,68 0,67 Z" fill="#B22E20" filter="url(#md-rough)"/>
+    <g filter="url(#md-rough-soft)">
+      <use href="#md-curl" x="48" y="33"/><use href="#md-curl" x="124" y="31"/><use href="#md-curl" x="200" y="34"/><use href="#md-curl" x="276" y="32"/><use href="#md-curl" x="352" y="33"/><use href="#md-curl" x="428" y="31"/><use href="#md-curl" x="504" y="34"/><use href="#md-curl" x="580" y="32"/><use href="#md-curl" x="656" y="33"/><use href="#md-curl" x="732" y="31"/><use href="#md-curl" x="808" y="34"/><use href="#md-curl" x="884" y="32"/><use href="#md-curl" x="960" y="33"/><use href="#md-curl" x="1036" y="31"/><use href="#md-curl" x="1112" y="34"/><use href="#md-curl" x="1188" y="32"/><use href="#md-curl" x="1264" y="33"/><use href="#md-curl" x="1340" y="31"/><use href="#md-curl" x="1416" y="34"/><use href="#md-curl" x="1492" y="32"/><use href="#md-curl" x="1560" y="33"/>
+    </g>
+  </svg></div>
 
-  <!-- ============ trust + closing ============ -->
-  <section class="ab-section" aria-labelledby="ab-trust-h">
-    <p class="ab-era ab-reveal">In good company</p>
-    <h2 id="ab-trust-h" class="ab-reveal">You're safe with us</h2>
-    <p class="ab-lede ab-reveal">We're ISO 27001:2022 certified — our commitment to keeping
-      your information protected, dependable and managed with transparency.</p>
+  <!-- ============ allies + closing ============ -->
+  <section class="md-section" aria-labelledby="md-trust-h">
+    <h2 id="md-trust-h" class="md-reveal">you're safe within these walls</h2>
+    <p class="md-lede md-reveal">we're iso 27001:2022 certified — our commitment to keeping your
+      information protected, dependable and managed with transparency.</p>
 
-    <p class="ab-clients ab-reveal"><b>Polestar</b> · <b>Samsung</b> · <b>Spotify</b> ·
-      <b>Telia</b> · <b>Volvo</b> · <b>Ericsson</b> · <b>HubSpot</b> · <b>Intrum</b> ·
-      <b>Biamp</b></p>
+    <p class="md-clients md-reveal">polestar <span>❦</span> samsung <span>❦</span> spotify
+      <span>❦</span> telia <span>❦</span> volvo <span>❦</span> ericsson <span>❦</span> hubspot
+      <span>❦</span> intrum <span>❦</span> biamp</p>
 
-    <div class="ab-cta ab-reveal">
-      <a href="mailto:hi@umain.com">Let's talk</a>
-      <p>hi@umain.com — for everything else, the nav above knows the way.</p>
+    <div class="md-reveal">
+      <a class="md-btn" href="mailto:hi@umain.com">
+        <svg viewBox="0 0 260 64" preserveAspectRatio="none" aria-hidden="true"><use href="#md-btnplate" filter="url(#md-rough-soft)"/></svg>
+        <span>let's talk</span>
+      </a>
+      <p class="md-cta-note">send word: hi@umain.com</p>
     </div>
+
+    <p class="md-wordmark md-reveal" aria-hidden="true">umain</p>
   </section>
 
-  <!-- ============ scroll choreography ============ -->
+  <!-- ============ scroll choreography + the map ============ -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
   <script>
   (function(){
+    /* ---- the map is interactive regardless of motion settings ---- */
+    var cities = {
+      stockholm: { anno: 'WHERE IT BEGAN', text: 'the mother studio. founded on the conviction that design and engineering belong in the same room — and still the heart of the guild.' },
+      oslo:      { anno: 'NORDIC REACH',   text: 'our second nordic hall. close to clients across norway, and one fjord away from home.' },
+      london:    { anno: 'EUROPEAN HUB',   text: 'the gateway to europe’s boldest brands and most ambitious disruptors.' },
+      chicago:   { anno: 'THE NEW WORLD',  text: 'our westernmost outpost, serving north america from the shore of the great lakes.' }
+    };
+    var panel = document.getElementById('md-map-panel');
+    var pins = Array.prototype.slice.call(document.querySelectorAll('.md-pin'));
+    pins.forEach(function(pin){
+      pin.addEventListener('click', function(){
+        var key = pin.getAttribute('data-city');
+        pins.forEach(function(p){ p.setAttribute('aria-pressed', String(p === pin)); });
+        panel.querySelector('h3').textContent = key;
+        panel.querySelector('.md-anno').textContent = cities[key].anno;
+        panel.querySelectorAll('p')[1].textContent = cities[key].text;
+      });
+    });
+
+    /* ---- scroll choreography ---- */
+    var vid = document.getElementById('md-hero-video');
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced || !window.gsap || !window.ScrollTrigger) return; // page is fully readable without motion
+    if (reduced || !window.gsap || !window.ScrollTrigger) {
+      // page stays fully readable; the film simply plays on its own
+      if (vid) { vid.autoplay = true; vid.loop = true; vid.play().catch(function(){}); }
+      return;
+    }
 
     gsap.registerPlugin(ScrollTrigger);
 
-    /* Lenis smooth scroll — lerp easing so scrubbed motion never jitters */
-    var lenis = null;
+    /* lenis smooth scroll — lerp easing so scrubbed motion never jitters */
     if (window.Lenis) {
-      lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
+      var lenis = new Lenis({ lerp: 0.09, wheelMultiplier: 1 });
       lenis.on('scroll', ScrollTrigger.update);
       gsap.ticker.add(function(t){ lenis.raf(t * 1000); });
       gsap.ticker.lagSmoothing(0);
     }
 
-    /* ---- pinned stage: hero parallax, then motto over everything ---- */
+    /* iOS/touch: a muted play()+pause() unlocks programmatic seeking */
+    window.addEventListener('touchstart', function unlock(){
+      vid.play().then(function(){ vid.pause(); }).catch(function(){});
+    }, { once: true });
+
+    /* pinned stage, two acts:
+       act i  (0 → 0.55): the film plays, driven by scroll
+       act ii (0.55 → 1): film holds its last frame, veil falls, the motto rises */
     var stage = gsap.timeline({
       scrollTrigger: {
-        trigger: '#ab-stage',
+        trigger: '#md-stage',
         start: 'top top',
-        end: '+=320%',
+        end: '+=650%',
         pin: true,
-        scrub: 0.7,          // slight lag on top of lenis = extra fluidity
+        scrub: 0.7,
         anticipatePin: 1
       },
       defaults: { ease: 'none' }
     });
 
-    // hero copy drifts away first
-    stage.to('.ab-hero-copy',  { y: -70, autoAlpha: 0, duration: 0.16 }, 0)
-         .to('.ab-scroll-hint',{ autoAlpha: 0, duration: 0.08 }, 0)
-         // media slowly scales + dims behind the motto (video-ready)
-         .to('.ab-hero-media', { scale: 1.14, yPercent: -4, duration: 1 }, 0)
-         .to('.ab-hero-veil',  { opacity: 0.72, duration: 0.5 }, 0.08);
+    var film = { p: 0 };
+    stage.to(film, {
+      p: 1, duration: 0.55,
+      onUpdate: function(){
+        if (vid.duration) vid.currentTime = film.p * (vid.duration - 0.05);
+      }
+    }, 0);
 
-    // motto words, one by one, on top of everything
-    gsap.set('.ab-w', { y: 56, autoAlpha: 0, filter: 'blur(8px)' });
-    gsap.set('.ab-motto-sub', { y: 32, autoAlpha: 0 });
-    stage.to('.ab-w', {
-            y: 0, autoAlpha: 1, filter: 'blur(0px)',
-            duration: 0.14, stagger: 0.13, ease: 'power2.out'
-          }, 0.24)
-         .to('.ab-motto-sub', { y: 0, autoAlpha: 1, duration: 0.14, ease: 'power2.out' }, 0.72);
+    stage.to('.md-scroll-hint',{ autoAlpha: 0, duration: 0.05 }, 0)
+         .to('.md-hero-copy',  { y: -70, autoAlpha: 0, duration: 0.1 }, 0.04)
+         .to('.md-hero-media', { scale: 1.14, yPercent: -4, duration: 0.45 }, 0.55)
+         .to('.md-hero-veil',  { opacity: 0.72, duration: 0.16 }, 0.56);
 
-    /* ---- section reveals: ease-smoothed entrances ---- */
-    gsap.utils.toArray('.ab-reveal').forEach(function(el){
+    gsap.set('.md-w', { y: 56, autoAlpha: 0, filter: 'blur(8px)' });
+    gsap.set('.md-motto-sub', { y: 32, autoAlpha: 0 });
+    stage.to('.md-w', { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.09, stagger: 0.08, ease: 'power2.out' }, 0.64)
+         .to('.md-motto-sub', { y: 0, autoAlpha: 1, duration: 0.09, ease: 'power2.out' }, 0.9);
+
+    /* section reveals */
+    gsap.utils.toArray('.md-reveal').forEach(function(el){
       gsap.fromTo(el,
         { y: 44, autoAlpha: 0 },
         { y: 0, autoAlpha: 1, duration: 1.1, ease: 'power3.out',
           scrollTrigger: { trigger: el, start: 'top 88%', toggleActions: 'play none none reverse' } });
     });
 
-    /* ---- timeline rule draws itself as you scroll ---- */
-    gsap.to('.ab-rule', {
+    /* the chronicle's rule draws itself */
+    gsap.to('.md-rule', {
       scaleY: 1, ease: 'none',
-      scrollTrigger: { trigger: '.ab-timeline', start: 'top 75%', end: 'bottom 55%', scrub: 0.7 }
+      scrollTrigger: { trigger: '.md-timeline', start: 'top 75%', end: 'bottom 55%', scrub: 0.7 }
     });
 
-    /* ---- gentle scrubbed parallax on framed artwork ---- */
-    gsap.utils.toArray('.ab-frame img').forEach(function(img){
-      gsap.fromTo(img, { yPercent: -6 }, {
-        yPercent: 6, ease: 'none',
-        scrollTrigger: { trigger: img, start: 'top bottom', end: 'bottom top', scrub: 0.7 }
+    /* map life: markers pop in, ship bobs, serpent sways */
+    gsap.fromTo('.md-pin', { scale: 0, autoAlpha: 0 }, {
+      scale: 1, autoAlpha: 1, duration: 0.7, ease: 'back.out(2.2)', stagger: 0.12,
+      scrollTrigger: { trigger: '.md-map-wrap', start: 'top 70%' }
+    });
+    gsap.to('.md-ship', { y: -7, rotation: 1.6, transformOrigin: '50% 50%', yoyo: true, repeat: -1, duration: 2.6, ease: 'sine.inOut' });
+    gsap.to('.md-serpent', { y: 5, transformOrigin: '50% 50%', yoyo: true, repeat: -1, duration: 3.2, ease: 'sine.inOut' });
+
+    /* red bands drift a touch as you pass them */
+    gsap.utils.toArray('.md-band svg').forEach(function(b){
+      gsap.fromTo(b, { xPercent: -1.5 }, {
+        xPercent: 1.5, ease: 'none',
+        scrollTrigger: { trigger: b, start: 'top bottom', end: 'bottom top', scrub: 0.7 }
       });
     });
   })();
